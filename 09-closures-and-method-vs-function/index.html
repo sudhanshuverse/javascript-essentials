@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures and Method vs Function in JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <h1>JavaScript: Closures and Methods vs Functions</h1>
+
+    <h2>1. Closures in JavaScript</h2>
+    <p><strong>Definition:</strong> A closure is a function that remembers the variables from its outer (enclosing)
+        function scope even after the outer function has finished executing.</p>
+
+    <strong>Example:</strong>
+    <pre><code>
+function outer() {
+    const a = 4;
+    function parent() {
+        const b = 6;
+        function add() {
+            console.log(a + b);
+        }
+        return add;
+    }
+    return parent();
+}
+
+const add1 = outer();
+add1(); // Output: 10
+    </code></pre>
+
+    <strong>Output:</strong>
+    <pre><code>
+10
+    </code></pre>
+
+    <h3> What's happening here?</h3>
+    <ul>
+        <li>The <code>outer()</code> function defines variable <code>a</code> and returns <code>parent()</code>.</li>
+        <li><code>parent()</code> defines variable <code>b</code> and returns function <code>add()</code>.</li>
+        <li><code>add()</code> uses both <code>a</code> and <code>b</code>, even though those functions have finished
+            executing. That's the **closure** in action!</li>
+    </ul>
+
+    <strong>Console Debug Output:</strong>
+    <pre><code>
+ƒ add()
+[[Scopes]]:
+    0: Closure (parent) {b: 6}
+    1: Closure (outer) {a: 4}
+    2: Script {add1: ƒ}
+    3: Global {...}
+    </code></pre>
+
+    <h2>2. Methods vs Functions</h2>
+
+    <p><strong>Definition:</strong></p>
+    <ul>
+        <li><strong>Function:</strong> A block of reusable code that performs a task. Defined globally or locally.</li>
+        <li><strong>Method:</strong> A function defined inside an object. It is invoked using the object reference.</li>
+    </ul>
+
+    <h3>Important Rule:</h3>
+    <p><strong>Every method is a function, but not every function is a method.</strong></p>
+
+    <strong>Example:</strong>
+    <pre><code>
+const maths = {
+    E: 2.718281828459045,
+    add: function (a, b) {
+        return a + b;
+    },
+    subtract(a, b) {
+        return a - b;
+    },
+    square(a) {
+        return a * a;
+    },
+    cube(a) {
+        return a * a * a;
+    }
+};
+
+// Usage
+console.log(maths.add(2, 3));      // 5 (method call)
+console.log(maths.square(4));      // 16 (method call)
+    </code></pre>
+
+    <strong>Output:</strong>
+    <pre><code>
+5
+16
+    </code></pre>
+
+    <h3>Key Points to Remember:</h3>
+    <ul>
+        <li>Methods are bound to the object and can use <code>this</code> keyword.</li>
+        <li>Functions can exist independently and are not bound to an object unless explicitly defined as a method.</li>
+        <li>Arrow functions cannot be used as methods if <code>this</code> is needed.</li>
+    </ul>
+
+</body>
+
+</html>
