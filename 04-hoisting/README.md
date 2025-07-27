@@ -41,7 +41,66 @@ const hi = function () {
 };
 ```
 
-3. Temporal Dead Zone (TDZ)
+## 🔥 Temporal Dead Zone (TDZ)
+
+### 📌 What is the Temporal Dead Zone?
+
+The **Temporal Dead Zone (TDZ)** is the time between the **start of a block** and the point where a `let` or `const` variable is **declared and initialized**.
+
+Even though the variable is **hoisted**, it **cannot be accessed** until its declaration line.
+
+> ⚠️ Trying to access the variable during the TDZ results in a **ReferenceError**.
+
+---
+
+### 🧠 TDZ in Action
+
 ```js
-console.log(x); 
+console.log(x); // ❌ ReferenceError: Cannot access 'x' before initialization
+let x = 5;
 ```
+
+#### 🔍 Explanation:
+- x is hoisted but not initialized → it's in the TDZ
+
+- When you try to access it before the line let x = 5;, it throws a ReferenceError
+
+- The TDZ ends at the line where the variable is declared
+
+
+#### ✅ Correct Usage Outside TDZ
+```js
+let y = 10;
+console.log(y); // ✅ Output: 10
+```
+Since y is declared before it's accessed, it’s out of the TDZ — so no error occurs.
+
+## 🔄 Comparing var vs let in TDZ
+```js
+console.log(a); // ✅ Output: undefined (hoisted and initialized)
+var a = 20;
+
+console.log(b); // ❌ ReferenceError: Cannot access 'b' before initialization
+let b = 30;
+```
+## 📊 Summary Table
+
+| Declaration    | Hoisted? | Initialized at Hoist?    | Accessible Before Declaration?       |
+|----------------|----------|---------------------------|--------------------------------------|
+| `var`          | ✅ Yes   | ✅ Yes (`undefined`)       | ✅ Yes (as `undefined`)              |
+| `let` / `const`| ✅ Yes   | ❌ No (in TDZ)             | ❌ No (`ReferenceError`)             |
+
+## 📌 Output Preview (Markdown Rendered)
+
+| Declaration     | Hoisted? | Initialized at Hoist?   | Accessible Before Declaration?    |
+|-----------------|----------|--------------------------|-----------------------------------|
+| `var`           | ✅ Yes   | ✅ Yes (`undefined`)      | ✅ Yes (as `undefined`)           |
+| `let` / `const` | ✅ Yes   | ❌ No (in TDZ)            | ❌ No (`ReferenceError`)          |
+
+
+## 💡 Key Takeaways
+- TDZ starts at the beginning of the block
+- TDZ ends at the variable's declaration line
+- Accessing let or const variables before declaration causes a ReferenceError
+- TDZ helps catch bugs and encourages clean coding practices
+
