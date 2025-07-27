@@ -101,7 +101,23 @@ Even numbers: [2, 4]
 
 - **Callbacks** – A function that is passed as an argument to another function is called a callback function, if it is intended to be called (executed) inside that function.
 
-- **Closures** – Returned functions “remember” variables from their parent.
+
+- **Closures** – A closure is a function that remembers variables from the place where it was created, even after that place has finished executing.
+Example: 
+```js 
+    function outerFunction() {
+    let name = "Sudhanshu";
+
+    function innerFunction() {
+        console.log("Hello, " + name);  // uses name from outer scope
+    }
+
+    return innerFunction;
+}
+
+let greet = outerFunction();  // outerFunction is done, but...
+greet();  // Output: Hello, Sudhanshu
+```
 
 - **Reusable Logic** – Write once, use many times.
 
