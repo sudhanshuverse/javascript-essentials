@@ -103,6 +103,7 @@ Even numbers: [2, 4]
 
 
 - **Closures** – A closure is a function that remembers variables from the place where it was created, even after that place has finished executing.
+- 
 Example: 
 ```js 
     function outerFunction() {
