@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background: #f9f9f9;
+    color: #333;
+}
+
+h1,
+h2,
+h3 {
+    color: #222;
+    margin-top: 20px;
+}
+
+section {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+
+p,
+ul,
+ol {
+    margin: 10px 0;
+}
+
+ul li,
+ol li {
+    margin-bottom: 8px;
+}
+
+pre {
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: monospace;
+    background: #eee;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}

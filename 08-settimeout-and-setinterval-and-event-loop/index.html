@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setTimeout and setInterval in JavaScript</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <h1>Understanding <code>setTimeout</code> and <code>setInterval</code> in JavaScript</h1>
+
+    <!-- What are they -->
+    <section>
+        <h2>What are <code>setTimeout</code> and <code>setInterval</code>?</h2>
+        <p>
+            <strong>setTimeout</strong> and <strong>setInterval</strong> are
+            built-in <strong>Web API methods</strong> provided by browsers to schedule tasks:
+        </p>
+        <ul>
+            <li><code>setTimeout(function, delay)</code> → Runs the function once after the delay (in ms).</li>
+            <li><code>setInterval(function, delay)</code> → Runs the function repeatedly every delay milliseconds.</li>
+        </ul>
+    </section>
+
+    <!-- ⚠️ Important Notes -->
+    <section>
+        <h2>⚠️ Important Notes</h2>
+        <ul>
+            <li><strong>Web APIs</strong>: These are not part of core JavaScript; they’re provided by the browser.</li>
+            <li><strong>setTimeout(fn, 0)</strong> still waits until the current stack is clear.</li>
+            <li><code>clearTimeout()</code> and <code>clearInterval()</code> stop scheduled functions.</li>
+        </ul>
+    </section>
+
+    <!--  Event Loop Explanation -->
+    <section>
+        <h2> How JavaScript Executes Timers – The Event Loop</h2>
+        <p>JavaScript is single-threaded and uses an <strong>Event Loop</strong> to handle asynchronous tasks like
+            timers.</p>
+
+        <h3>The 3 Phases of Execution</h3>
+        <ol>
+            <li>
+                <strong>Call Stack:</strong> JavaScript runs code line-by-line. When it finds a timer like
+                <code>setTimeout</code>, it sends it to...
+            </li>
+            <li><strong>Web APIs:</strong> Browser timers handle the countdown in the background.</li>
+            <li>
+                <strong>Callback Queue:</strong> Once the timer finishes, the callback is moved here and waits until the
+                call stack is empty.
+            </li>
+        </ol>
+        <p>
+            The <strong>Event Loop</strong> constantly checks the stack. When it's empty, it pushes the next callback
+            from the
+            queue to the stack for execution.
+        </p>
+
+        <h4> Visual Demo</h4>
+        <p>The GIF below shows how Call Stack → Web APIs → Callback Queue work together.</p>
+        <img src="./screenshot.gif" alt="Event Loop Demo with Timers" width="100%" height="auto" />
+    </section>
+
+    <!-- Examples -->
+    <section>
+        <h2>Examples</h2>
+
+        <h3>1. setTimeout with Function</h3>
+        <pre><code>
+function greet() {
+  console.log("Hello from setTimeout!");
+}
+setTimeout(greet, 2000);
+    </code></pre>
+
+        <h3> 2. setTimeout with Arrow Function</h3>
+        <pre><code>
+setTimeout(() => {
+  console.log("Executed after 3 seconds.");
+}, 3000);
+    </code></pre>
+
+        <h3> 3. setInterval Example</h3>
+        <pre><code>
+const intervalId = setInterval(() => {
+  console.log("Repeating every 5 seconds.");
+}, 5000);
+    </code></pre>
+
+        <h3> 4. Clearing Timeout and Interval</h3>
+        <pre><code>
+clearTimeout(timerId);     // Cancels a timeout
+clearInterval(intervalId); // Cancels a repeating interval
+    </code></pre>
+
+        <h3> 5. Event Loop Execution Example</h3>
+        <pre><code>
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Inside setTimeout");
+}, 0);
+
+console.log("End");
+
+// Output:
+// Start
+// End
+// Inside setTimeout
+    </code></pre>
+    </section>
+</body>
+</html>
