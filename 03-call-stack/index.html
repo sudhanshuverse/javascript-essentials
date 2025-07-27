@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScript Call Stack Explained</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+
+        <h1>JavaScript Call Stack</h1>
+
+        <h2>🔹 What is a Call Stack?</h2>
+        <p>
+            A <strong>Call Stack</strong> is a data structure used by the
+            JavaScript engine to keep track of function invocations.
+            It follows the <strong>LIFO (Last In, First Out)</strong> principle.
+            Each time a function is called, it's added (pushed) to the stack.
+            When the function returns, it's removed (popped) from the stack.
+        </p>
+
+        <h2>📘 Example 1: Normal Function Call Stack</h2>
+        <pre>
+            <code>
+                function sayHi() {
+                // Function definitions
+                const a = 10;
+                const b = 20;
+                add(5, 7);
+            }
+
+            function add(x, y) {
+                kuchBhi();
+                return x + y;
+            }
+
+            function kuchBhi() {
+                console.log("Kuch Bhi");
+            }
+
+            // Call the function
+            sayHi();
+        </code>
+    </pre>
+
+        <button onclick="runNormalStack()">Run Normal Call Stack</button>
+
+        <h2>📘 Example 2: Infinite Recursion (Stack Overflow)</h2>
+        <pre>
+            <code>
+                function introduceMe() {
+                    console.log("Introduce Me.");
+                    introduceMe(); // Infinite Recursion
+                }
+
+                introduceMe(); // ⚠️ Causes Maximum Call Stack Size Exceeded
+            </code>
+        </pre>
+
+        <button onclick="runInfiniteStack()">Run Infinite Stack (Be Careful!)</button>
+
+        <h2>✅ Why is the Call Stack Important?</h2>
+        <ul>
+            <li>Tracks the order of function calls</li>
+            <li>Helps in debugging (stack traces)</li>
+            <li>Essential for recursion handling</li>
+            <li>Manages memory allocation during function execution</li>
+        </ul>
+
+        <h2>📌 Output</h2>
+        <p>Open your browser's <strong>Console (F12)</strong> to view the call
+            stack output when you run the examples.</p>
+    </body>
+</html>

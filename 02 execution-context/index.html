@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScript Execution Context</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <h1>JavaScript Execution Context</h1>
+        </header>
+
+        <main>
+            <section>
+                <p>
+                    The <strong>Execution Context</strong> is the environment in
+                    which JavaScript code runs. It determines how code is
+                    interpreted and what data (variables, functions) it has
+                    access to at any point.
+                </p>
+            </section>
+
+            <section>
+                <h2>🔁 Two Phases of Execution Context</h2>
+
+                <strong>Phase 1: Memory Creation Phase</strong>
+                <ul>
+                    <li>All variables and function declarations are stored in
+                        memory.</li>
+                    <li>Variables are initialized with the value
+                        <code>undefined</code>.</li>
+                    <li>Function declarations are hoisted with their full
+                        definitions.</li>
+                </ul>
+
+                <strong>Phase 2: Code Execution Phase</strong>
+                <ul>
+                    <li>The code is executed line by line.</li>
+                    <li>Variables are assigned their actual values.</li>
+                    <li>Functions are invoked, and each creates its own
+                        execution context.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>📦 Types of Execution Context</h2>
+                <ul>
+                    <li><strong>Global Execution Context (GEC)</strong>:
+                        Automatically created when a script runs. It handles
+                        global code.</li>
+                    <li><strong>Function Execution Context (FEC)</strong>:
+                        Created each time a function is called. Each has its own
+                        local variables and scope.</li>
+                    <li><strong>Eval Execution Context</strong>: Created only
+                        when using <code>eval()</code>. Rarely used and
+                        discouraged.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>🧪 Example Code</h2>
+                <p>Use browser developer tools (F12) to step through the
+                    execution using the debugger.</p>
+                <pre><code>
+debugger;
+
+fun1();
+
+var userName = "Hey";
+var age = 20;
+
+function fun1() {
+    const a = 20;
+    const b = 30;
+    const result = fun2(a, b);
+    console.log("Result from fun2:", result);
+}
+
+function fun2(a, b) {
+    return a + b;
+}
+            </code></pre>
+            </section>
+        </main>
+
+        <footer>
+            &copy; 2025 JavaScript Learning Project | Execution Context
+            Explained
+        </footer>
+    </body>
+</html>

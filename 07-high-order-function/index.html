@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher-Order Functions in JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h1>Learning Higher-Order Functions in JavaScript</h1>
+    
+    <h2>What is a Higher-Order Function?</h2>
+    <p>A <strong>higher-order function</strong> is a function that can do one or both of these things:</p>
+    <ul>
+        <li>Use another function as an input.</li>
+        <li>Give back a function as an output.</li>
+    </ul>
+    <p>In JavaScript, functions are like any other value (like numbers or text). You can pass them around, store them in
+        variables, or return them from other functions. This makes higher-order functions possible.</p>
+    
+    <h2>Why Are They Useful?</h2>
+    <ul>
+        <li><strong>Make Code Simpler</strong>: They help you reuse code so you don’t have to write the same thing over and
+            over.</li>
+        <li><strong>Work with Events</strong>: They’re great for handling things like button clicks or timers.</li>
+        <li><strong>Build Smarter Code</strong>: They let you create flexible code that’s easier to change later.</li>
+    </ul>
+    
+    <h2>Simple Example</h2>
+    <p>Here’s an example where one function uses another function as an input.</p>
+    <pre>
+            <code>
+    function greet(callback) {
+        console.log("Executing the greet function...");
+        callback();
+    }
+    
+    function sayHello() {
+        console.log("Hello, I am the callback function!");
+    }
+    
+    greet(sayHello);
+            </code>
+        </pre>
+    <p><strong>Output:</strong></p>
+    <div class="example-output" id="basic-example-output">Click the button below to see the output.</div>
+    <button onclick="runBasicExample()">Run Simple Example</button>
+    
+    <h2>Next-Level Example: Making a Function</h2>
+    <p>A higher-order function can also create and give back a new function. This is handy for making reusable tools, like a
+        function that multiplies numbers.</p>
+    <pre>
+            <code>
+    function multiplier(factor) {
+        return function(number) {
+            return number * factor;
+        };
+    }
+    
+    const double = multiplier(2);
+    const triple = multiplier(3);
+    
+    console.log(double(5)); // 10
+    console.log(triple(5)); // 15
+            </code>
+        </pre>
+    <p><strong>Output:</strong></p>
+    <div class="example-output" id="advanced-example-output">Click the button below to see the output.</div>
+    <button onclick="runAdvancedExample()">Run Next-Level Example</button>
+    
+    <h2>Real-Life Example: Working with Arrays</h2>
+    <p>JavaScript has built-in tools like <code>map</code> and <code>filter</code> that are higher-order functions because
+        they use other functions to do their job.</p>
+    <pre>
+            <code>
+    const numbers = [1, 2, 3, 4, 5];
+    
+    // Using map to double each number
+    const doubled = numbers.map(num => num * 2);
+    console.log("Doubled numbers:", doubled);
+    
+    // Using filter to get even numbers
+    const evens = numbers.filter(num => num % 2 === 0);
+    console.log("Even numbers:", evens);
+            </code>
+        </pre>
+    <p><strong>Output:</strong></p>
+    <div class="example-output" id="array-example-output">Click the button below to see the output.</div>
+    <button onclick="runArrayExample()">Run Array Example</button>
+    
+    <h2>Key Things to Know</h2>
+    <ol>
+        <li><strong>Functions Are Flexible</strong>: In JavaScript, you can treat functions like numbers or words—store
+            them, pass them, or return them.</li>
+        <li><strong>Callbacks</strong>: These are functions you give to another function to run later, like when a button is
+            clicked.</li>
+        <li><strong>Memory Trick</strong>: When a function returns another function, the new function can “remember” values
+            from the original function. This is called a closure.</li>
+        <li><strong>Save Time</strong>: Higher-order functions let you write less code by reusing logic.</li>
+        <li><strong>Handle Delays</strong>: They’re often used for things that take time, like waiting for a timer or a web
+            request.</li>
+    </ol>
+    
+    <h2>Why They’re Great</h2>
+    <ul>
+        <li><strong>Reuse Code</strong>: Write one function and use it in many ways.</li>
+        <li><strong>Clear Code</strong>: Hide tricky parts to make your code easier to read.</li>
+        <li><strong>Easy to Grow</strong>: Add new features without rewriting everything.</li>
+    </ul>
+    
+    <h2>Things to Watch Out For</h2>
+    <ul>
+        <li><strong>Can Get Confusing</strong>: Too many functions inside functions might be hard to follow.</li>
+        <li><strong>Slows Down</strong>: Using lots of functions can make big programs run slower.</li>
+        <li><strong>Hard to Fix</strong>: Errors can be tricky to track down when functions are nested.</li>
+    </ul>
+    
+    <h2>Try It Yourself: Custom Filter</h2>
+    <p>Let’s make a higher-order function that picks items from an array based on a rule you give it.</p>
+    <pre>
+            <code>
+    function customFilter(array, condition) {
+        const result = [];
+        for (let item of array) {
+            if (condition(item)) {
+                result.push(item);
+            }
+        }
+        return result;
+    }
+    
+    const numbers = [1, 2, 3, 4, 5, 6];
+    const isEven = num => num % 2 === 0;
+    const greaterThanThree = num => num > 3;
+    
+    console.log("Even numbers:", customFilter(numbers, isEven));
+    console.log("Numbers > 3:", customFilter(numbers, greaterThanThree));
+            </code>
+        </pre>
+    <p><strong>Output:</strong></p>
+    <div class="example-output" id="custom-filter-output">Click the button below to see the output.</div>
+    <button onclick="runCustomFilterExample()">Run Custom Filter Example</button>
+
+</body>
+
+</html>

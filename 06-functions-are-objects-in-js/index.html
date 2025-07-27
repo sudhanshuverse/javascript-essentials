@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Function Concepts</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <h1>JavaScript Function Concepts</h1>
+
+    <div class="section">
+        <h2>What is a Function?</h2>
+        <p>A function is a reusable block of code that performs a specific task. In JavaScript, functions are actually
+            special types of objects.</p>
+        <h3>Example:</h3>
+        <pre><code>
+function a(b) {
+    console.log(b);
+}
+console.log(typeof a); // "function" (functions are a type of object)
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Functions are Objects in JavaScript</h2>
+        <p>Using <code>console.dir()</code>, we can inspect function internals like any object.</p>
+        <pre><code>
+function a(b) {
+    console.log(b);
+}
+
+console.dir(a);
+        </code></pre>
+        <p><strong>Console Output (simplified):</strong></p>
+        <pre><code>
+ƒ a(b)
+length: 1
+name: "a"
+prototype: {
+    constructor: ƒ a(b)
+}
+[[Prototype]]: ƒ ()
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>Functions Can Hold Properties</h2>
+        <p>We can add custom properties to a function, just like objects.</p>
+        <pre><code>
+function a(b) {
+    console.log(b);
+}
+
+a.userName = "Priyanshu";
+a.userAge = 20;
+
+console.dir(a);
+        </code></pre>
+        <p><strong>Console Output:</strong></p>
+        <pre><code>
+ƒ a(b)
+userName: "Priyanshu"
+userAge: 20
+length: 1
+name: "a"
+        </code></pre>
+        <p><strong>Conclusion:</strong> This proves functions behave like objects and can store data.</p>
+    </div>
+
+    <div class="section">
+        <h2>What is a Callback Function?</h2>
+        <p>A <strong>callback function</strong> is a function passed as an argument to another function and executed
+            later.</p>
+        <h3>Example:</h3>
+        <pre><code>
+// Function that takes a callback
+function greet(callback) {
+    console.log("Hello!");
+    callback(); // Executes the callback
+}
+
+// Callback function
+function sayGoodbye() {
+    console.log("Goodbye!");
+}
+
+greet(sayGoodbye);
+        </code></pre>
+        <p><strong>Console Output:</strong></p>
+        <pre><code>
+Hello!
+Goodbye!
+        </code></pre>
+        <h3>Explanation:</h3>
+        <ul>
+            <li><code>greet()</code> is a higher-order function.</li>
+            <li><code>sayGoodbye</code> is a callback function.</li>
+            <li>This is a synchronous callback — it executes immediately during the call.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>What is <code>console.dir()</code>?</h2>
+        <p>
+            <code>console.dir()</code> is used to display an interactive, expandable list of the properties of a
+            JavaScript object.
+            It helps you inspect objects or functions more deeply than <code>console.log()</code>.
+        </p>
+
+        <h3>Difference Between <code>console.log()</code> and <code>console.dir()</code>:</h3>
+        <ul>
+            <li><code>console.log()</code> shows function body or basic object as string.</li>
+            <li><code>console.dir()</code> shows full internal properties, like a structured tree.</li>
+        </ul>
+
+        <h3>Example:</h3>
+        <pre><code>
+function greet(name) {
+    return "Hello " + name;
+}
+
+console.log(greet);  // Outputs function code
+console.dir(greet);  // Shows internal structure
+        </code></pre>
+
+        <p><strong>Console Output (simplified):</strong></p>
+        <pre><code>
+ƒ greet(name)
+length: 1
+name: "greet"
+prototype: {
+    constructor: ƒ greet(name)
+}
+[[Prototype]]: ƒ ()
+        </code></pre>
+
+        <p><strong>Use <code>console.dir()</code> to deeply inspect any function or object in JavaScript.</strong></p>
+    </div>
+
+</body>
+</html>

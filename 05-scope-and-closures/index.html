@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Understanding Scope and Closures in JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <h1>Understanding Scope and Closures in JavaScript</h1>
+
+    <h2>What is Scope in JavaScript?</h2>
+    <p>
+        <strong>Scope</strong> in JavaScript refers to the current context of execution.
+        It defines where variables, functions, and objects are accessible.
+        JavaScript uses <strong>lexical scoping</strong>, meaning scope is determined by the placement of variables and
+        functions in the source code.
+    </p>
+
+    <h2>Types of Scope</h2>
+    <ol>
+        <li>Global Scope</li>
+        <li>Local (Function) Scope</li>
+        <li>Block Scope</li>
+        <li>Lexical Scope</li>
+        <li>Closures</li>
+        <li>Module Scope</li>
+    </ol>
+
+    <h3>1.Global Scope</h3>
+    <p>
+        Variables declared outside of any function or block are in the <strong>global scope</strong>.
+        They can be accessed anywhere in the program, including inside functions.
+    </p>
+    <pre><code>
+// Global variable
+let name = 'Priyanshu';
+
+function greet() {
+  console.log(`Hi, ${name}`); // Accessible
+}
+
+greet();
+console.log(name); // Accessible globally
+  </code></pre>
+
+    <h3>2. Local (Function) Scope</h3>
+    <p>
+        Variables declared inside a function are local to that function.
+        They cannot be accessed from outside the function.
+    </p>
+    <pre><code>
+function showAge() {
+  const age = 21;
+  console.log(age); // Output: 21
+}
+
+showAge();
+console.log(age); //  ReferenceError
+  </code></pre>
+
+    <h3>3. Block Scope</h3>
+    <p>
+        Variables declared with <code>let</code> or <code>const</code> inside a block <code>{ }</code> are block-scoped.
+        They are not accessible outside the block.
+    </p>
+    <pre><code>
+{
+  let course = 'JavaScript';
+  const year = 2025;
+  console.log(course); // JavaScript
+}
+
+console.log(course); // ReferenceError
+
+// var is NOT block scoped
+{
+  var oldWay = 'Global var';
+}
+console.log(oldWay); // Accessible
+  </code></pre>
+
+    <h3>4. Lexical Scope</h3>
+    <p>
+        Lexical scope means functions have access to variables defined in their outer scope
+        — based on where the function was defined, not where it's called.
+    </p>
+    <pre><code>
+function outer() {
+  let outerVar = 'I am outer';
+
+  function inner() {
+    console.log(outerVar); // Accesses outerVar
+  }
+
+  inner();
+}
+
+outer();
+console.log(outerVar); // ReferenceError
+  </code></pre>
+
+    <h3>5. 🔒 Closures</h3>
+    <p>
+        A <strong>closure</strong> is formed when an inner function "remembers" the variables from its outer function,
+        even after the outer function has finished executing.
+    </p>
+    <p>
+        This allows data privacy and is used in many powerful JavaScript patterns.
+    </p>
+
+    <h4>Example 1: Counter using Closure</h4>
+    <pre><code>
+function createCounter() {
+  let count = 0;
+
+  function increment() {
+    count++;
+    console.log(`Count: ${count}`);
+  }
+
+  return increment;
+}
+
+const counter1 = createCounter();
+counter1(); // Count: 1
+counter1(); // Count: 2
+
+const counter2 = createCounter();
+counter2(); // Count: 1 (separate instance)
+  </code></pre>
+
+    <h4>Example 2: Closure with Parameters</h4>
+    <pre><code>
+function multiplyBy(n) {
+  return function(x) {
+    return n * x;
+  }
+}
+
+const double = multiplyBy(2);
+console.log(double(5)); // 10
+
+const triple = multiplyBy(3);
+console.log(triple(4)); // 12
+  </code></pre>
+
+    <h3>6. Module Scope</h3>
+    <p>
+        In JavaScript modules (using <code>type="module"</code> or separate JS files), variables declared are scoped to
+        the module.
+        They are not accessible globally unless exported.
+    </p>
+    <pre><code>
+// File: myModule.js
+const secret = 'Private';
+export const name = 'Sudhanshu';
+
+export function greet() {
+  console.log(`Hi, ${name}`);
+}
+
+// File: main.js
+import { greet } from './myModule.js';
+greet(); // Hi, Sudhanshu
+  </code></pre>
+
+    <h2>Implicit Globals</h2>
+    <p>
+        Declaring variables without <code>let</code>, <code>const</code>, or <code>var</code> creates <strong>implicit
+            global variables</strong>.
+        This can lead to bugs and unpredictable behavior.
+    </p>
+    <pre><code>
+function outer() {
+  age = 21; // Implicit global
+  console.log(age); // 21
+}
+outer();
+console.log(age); // 21 — but it's now global (bad practice)
+  </code></pre>
+
+    <h2> Preventing Implicit Globals with Strict Mode</h2>
+    <p>
+        Use <code>'use strict'</code> to avoid silent bugs and enforce variable declarations.
+    </p>
+    <pre><code>
+'use strict';
+
+function test() {
+  undeclaredVar = 10; //  ReferenceError
+}
+test();
+  </code></pre>
+
+    <h2>📌 Important Points to Remember</h2>
+    <ul>
+        <li>Use <code>let</code> or <code>const</code> instead of <code>var</code> to avoid scope confusion.</li>
+        <li>Always declare variables — never rely on implicit globals.</li>
+        <li><strong>Closures</strong> allow private data and persistent state.</li>
+        <li>JavaScript is <strong>lexically scoped</strong> — scope is determined where code is written, not called.
+        </li>
+        <li><strong>Block Scope</strong> exists with <code>{}</code> when using <code>let</code>/<code>const</code>.
+        </li>
+        <li><strong>Module Scope</strong> prevents global pollution and enables better code organization.</li>
+    </ul>
+
+    <h2>Scope Type Comparison Table</h2>
+    <pre><code>
+| Scope Type     | Accessible In          | Declared Using            | Notes                           |
+|----------------|------------------------|----------------------------|----------------------------------|
+| Global         | Anywhere               | Outside any function       | Can be accessed from any scope   |
+| Function Scope | Inside the function    | var, let, const            | Not accessible outside           |
+| Block Scope    | Inside { }             | let, const                 | Not accessible outside the block |
+| Lexical Scope  | Defined in source code | Nested functions           | Scope determined where declared  |
+| Closure        | Retains outer scope    | Function inside function   | Keeps access after return        |
+| Module Scope   | Within a module        | let, const (in modules)    | Not accessible globally          |
+  </code></pre>
+
+
+</body>
+
+</html>

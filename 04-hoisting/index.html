@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Hoisting</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <h1>JavaScript Hoisting</h1>
+    <!-- 🔹 Two Phase Explanation -->
+    <h2>🔹 How JavaScript Runs Code: Two Phases</h2>
+    <p>JavaScript runs code in two main steps:</p>
+    <ol>
+        <li>
+            <strong>Memory Creation Phase:</strong>
+            <br>
+            The JavaScript engine scans the code and:
+            <ul>
+                <li>
+                    Sets up memory for all
+                    <code>var</code>
+                    ,
+                    <code>let</code>
+                    , and
+                    <code>const</code>
+                    variables.
+                </li>
+                <li>
+                    Sets
+                    <code>var</code>
+                    to
+                    <code>undefined</code>
+                    .
+                </li>
+                <li>Stores full function declarations so they can be used anywhere.</li>
+                <li>
+                    Marks
+                    <code>let</code>
+                    and
+                    <code>const</code>
+                    as unusable until their declaration (this is the
+                    <strong>Temporal Dead Zone</strong>
+                    ).
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>Execution Phase:</strong>
+            <br>
+            The code runs line-by-line, assigning values to variables and running functions.
+        </li>
+    </ol>
+    <!-- 🔹 Hoisting Definition -->
+    <h2>🔹 What is Hoisting?</h2>
+    <p>
+        <strong>Hoisting</strong>
+        is when JavaScript prepares all variable and function declarations before running the code, so they can be used
+        earlier in their scope. It doesn't actually move the code but sets them up in memory.
+    </p>
+    <p>
+        For
+        <code>var</code>
+        , the variable is set to
+        <code>undefined</code>
+        until its value is assigned. For
+        <code>let</code>
+        and
+        <code>const</code>
+        , you can't use them before their declaration line (they're in the
+        <strong>Temporal Dead Zone</strong>
+        ).
+    </p>
+    <p>
+        Function declarations are fully ready to use anywhere, but function expressions (like
+        <code>var x = function() {}</code>
+        ) aren't usable until assigned.
+    </p>
+    <!-- 🔹 Function Hoisting Example -->
+    <h2>🔹 Example of Function Hoisting</h2>
+    <p>This function works before it's defined because function declarations are fully hoisted.</p>
+    <pre>
+    <code>
+hi(); // Output: Hello
+function hi() {
+console.log("Hello");
+}
+    </code>
+    </pre>
+    <button onclick="hi()">Click to Call Hoisted Function</button>
+
+    <!-- 🔹 Function Not Hoisting Example -->
+<h2>🔹 Example of Function that is Not Hoisted (Function Expression)</h2>
+<p>This function does <strong>not</strong> work before it's defined because function expressions are not hoisted.</p>
+
+<pre>
+<code>
+hi(); // Error: Cannot access 'hi' before initialization
+
+const hi = function () {
+    console.log("Hello");
+};
+
+hi(); // Output: Hello
+</code>
+</pre>
+
+    <!-- 🔹 Temporal Dead Zone -->
+    <h2>🔹 Temporal Dead Zone (TDZ)</h2>
+    <p>
+        Variables with
+        <code>let</code>
+        or
+        <code>const</code>
+        are set up in memory but can't be used until their declaration line. This waiting period is called the 
+        <strong>Temporal Dead Zone (TDZ)</strong>. Trying to use them early causes an error.
+    </p>
+    <pre>
+            <code>
+console.log(x); // ReferenceError: Cannot access 'x' before initialization let x = 10;
+            </code>
+        </pre>
+</body>
+
+</html>
