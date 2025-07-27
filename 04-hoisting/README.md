@@ -90,14 +90,6 @@ let b = 30;
 | `var`          | ✅ Yes   | ✅ Yes (`undefined`)       | ✅ Yes (as `undefined`)              |
 | `let` / `const`| ✅ Yes   | ❌ No (in TDZ)             | ❌ No (`ReferenceError`)             |
 
-## 📌 Output Preview (Markdown Rendered)
-
-| Declaration     | Hoisted? | Initialized at Hoist?   | Accessible Before Declaration?    |
-|-----------------|----------|--------------------------|-----------------------------------|
-| `var`           | ✅ Yes   | ✅ Yes (`undefined`)      | ✅ Yes (as `undefined`)           |
-| `let` / `const` | ✅ Yes   | ❌ No (in TDZ)            | ❌ No (`ReferenceError`)          |
-
-
 ## 💡 Key Takeaways
 - TDZ starts at the beginning of the block
 - TDZ ends at the variable's declaration line
