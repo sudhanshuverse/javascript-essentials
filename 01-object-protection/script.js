@@ -22,3 +22,6 @@ user.city = "Delhi";     // ❌ Not allowed
 delete user.name;        // ❌ Not allowed
 
 console.log("User object after freeze:", user);
+
+
+
