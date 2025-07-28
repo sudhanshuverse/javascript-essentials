@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Loops and Arrow Functions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>JavaScript: Arrow Functions and Looping Methods</h1>
+
+    <h2>1. Arrow Functions</h2>
+    <p>Arrow functions are a concise way to write functions in JavaScript. They do not bind their own <code>this</code>,
+        <code>arguments</code>, or <code>super</code>, making them suitable for callbacks and short functions.</p>
+
+    <h3>🔹 Syntax and Examples</h3>
+    <pre><code>// Traditional function
+function square(num) {
+    return num * num;
+}
+
+// Arrow function (explicit return)
+const square = (num) => {
+    return num * num;
+}
+
+// Arrow function (implicit return)
+const square = num => num * num;
+
+console.log(square(5)); // Output: 25
+</code></pre>
+
+    <h3>🔹 Key Features</h3>
+    <ul>
+        <li>Shorter syntax</li>
+        <li>Does not bind <code>this</code> (lexical this)</li>
+        <li>Cannot be used with <code>new</code></li>
+        <li>No <code>arguments</code> object</li>
+    </ul>
+
+    <h2>2. Looping Methods</h2>
+
+    <h3>2.1. Normal <code>for</code> Loop</h3>
+    <p>Best when you need to access or manipulate the index directly.</p>
+    <pre><code>const fruits = ['Apple', 'Mango', 'Banana'];
+
+for (let i = 0; i &lt; fruits.length; i++) {
+    console.log(fruits[i]);
+}</code></pre>
+
+    <h3>2.2. <code>for...of</code> Loop</h3>
+    <p>Best when you want to iterate through values in an array or iterable.</p>
+    <pre><code>for (const fruit of fruits) {
+    console.log(fruit);
+}</code></pre>
+
+    <h3>2.3. <code>for...in</code> Loop</h3>
+    <p>Used for iterating over object keys.</p>
+    <pre><code>const person = {
+    name: "Girija Devi",
+    age: 40,
+    education: "8th passout"
+};
+
+for (const key in person) {
+    console.log(key + ": " + person[key]);
+}</code></pre>
+
+    <h3>2.4. <code>forEach()</code> Method</h3>
+    <p><strong>forEach</strong> is a method of the <code>Array</code> object. It executes a provided function once for
+        each array element.</p>
+
+    <pre><code>fruits.forEach(function(fruit, index) {
+    console.log(index + " → " + fruit);
+});</code></pre>
+
+    <h3>🔹 Key Facts About <code>forEach</code></h3>
+    <ul>
+        <li><code>forEach</code> is a <strong>method</strong>, not a global function</li>
+        <li>Belongs to <code>Array.prototype</code></li>
+        <li>Cannot be broken (no <code>break</code> or <code>continue</code>)</li>
+        <li>Best for performing side-effects like logging or UI updates</li>
+    </ul>
+
+    <h2>3. When to Use Which Loop?</h2>
+    <ul>
+        <li><strong>for loop</strong>: When you need full control of index and want to modify the loop or break early.
+        </li>
+        <li><strong>for...of</strong>: When you only need the values from an array or iterable.</li>
+        <li><strong>for...in</strong>: When you want to loop through the keys of an object (not suitable for arrays).
+        </li>
+        <li><strong>forEach()</strong>: When you want to execute a function on each item in an array, especially for
+            side-effects like logging or rendering.</li>
+    </ul>
+
+    <h2>4. Difference Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Loop Type</th>
+                <th>Use Case</th>
+                <th>Data Type</th>
+                <th>Can Break?</th>
+                <th>Return Value</th>
+                <th>Best For</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>for</code></td>
+                <td>Indexed loop</td>
+                <td>Array, String</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Manual index control</td>
+            </tr>
+            <tr>
+                <td><code>for...of</code></td>
+                <td>Value iteration</td>
+                <td>Iterable (Array, String, Set)</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Reading array values</td>
+            </tr>
+            <tr>
+                <td><code>for...in</code></td>
+                <td>Key iteration</td>
+                <td>Object (also Arrays, but not recommended)</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Reading object properties</td>
+            </tr>
+            <tr>
+                <td><code>forEach</code></td>
+                <td>Array iteration with function</td>
+                <td>Array only</td>
+                <td>No</td>
+                <td>undefined</td>
+                <td>Logging / DOM updates / side effects</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
