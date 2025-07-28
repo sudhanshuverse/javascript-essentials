@@ -11,9 +11,7 @@
 <body>
 
     <h1>JavaScript Array Methods & ES6 Concepts</h1>
-
     <hr>
-
     <h2>1. <code>map()</code> Method</h2>
     <p><strong>Definition:</strong> <code>map()</code> creates a new array by transforming every element in an array
         using a callback function.</p>
@@ -29,9 +27,7 @@ const upperMonths = months.map(month => month.toUpperCase());
 console.log(upperMonths);
 </code></pre>
     <p class="output">Output: ["JANUARY", "FEBRUARY", "MARCH"]</p>
-
     <hr>
-
     <h2>2. <code>filter()</code> Method</h2>
     <p><strong>Definition:</strong> Returns a new array containing elements that match a given condition.</p>
     <p><strong>Important Points:</strong></p>
@@ -103,11 +99,11 @@ console.log(allBig);
 
     <pre><code>
 function add() {
-  let sum = 0;
-  for (let i = 0; i < arguments.length; i++) {
-    sum += arguments[i];
-  }
-  return sum;
+    let sum = 0;
+    for (let i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+    }
+    return sum;
 }
 
 console.log(add(10, 20, 30));
@@ -123,7 +119,7 @@ console.log(add(10, 20, 30));
 
     <pre><code>
 function greet(name = "Guest") {
-  return "Hello " + name;
+    return "Hello " + name;
 }
 console.log(greet());
 </code></pre>
