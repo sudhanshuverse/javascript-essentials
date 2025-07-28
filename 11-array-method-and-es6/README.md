@@ -25,11 +25,11 @@ console.log(capitalized); // ["JANUARY", "FEBRUARY", "MARCH"]
 ### 📖 Definition:
 The filter() method returns a new array containing elements that satisfy a given condition.
 
-✅ Syntax:
+### ✅ Syntax:
 ```js
 const filteredArray = array.filter(callback(element, index, array));
 ```
-🧪 Example:
+### 🧪 Example:
 ```js
 const nums = [1, 2, 3, 4];
 const even = nums.filter(n => n % 2 === 0);
@@ -41,14 +41,14 @@ console.log(even); // [2, 4]
 - Returns a new filtered array.
 
 ## 3. reduce() Method
-📖 Definition:
+### 📖 Definition:
 The reduce() method reduces the array to a single value by applying a function.
 
-✅ Syntax:
+### ✅ Syntax:
 ```js
 const result = array.reduce((accumulator, currentValue) => {}, initialValue);
 ```
-🧪 Example:
+### 🧪 Example:
 ```js
 const nums = [1, 2, 3];
 const sum = nums.reduce((acc, val) => acc + val, 0);
@@ -60,15 +60,15 @@ console.log(sum); // 6
 - Requires an initialValue.
 
 ## 4. some() Method
-📖 Definition:
+### 📖 Definition:
 Returns true if at least one element satisfies the condition.
 
-✅ Syntax:
+### ✅ Syntax:
 ```js
 const result = array.some(callback(element));
 ```
 
-🧪 Example:
+### 🧪 Example:
 ```js
 const numbers = [10, 20, 30];
 const hasAbove25 = numbers.some(n => n > 25);
@@ -78,15 +78,15 @@ console.log(hasAbove25); // true
 Stops after finding the first match.
 
 ## 5. every() Method
-📖 Definition:
+### 📖 Definition:
 Returns true if all elements satisfy the condition.
 
-✅ Syntax:
+### ✅ Syntax:
 ```js
 const result = array.every(callback(element));
 ```
 
-🧪 Example:
+### 🧪 Example:
 ```js
 const numbers = [10, 20, 30];
 const allAbove5 = numbers.every(n => n > 5);
@@ -97,10 +97,10 @@ console.log(allAbove5); // true
 - Stops after finding the first failure.
 
 ## 6. arguments Keyword
-📖 Definition:
+### 📖 Definition:
 arguments is an array-like object inside regular functions (not arrow functions), containing all passed parameters.
 
-🧪 Example:
+### 🧪 Example:
 ```js
 function add() {
   let sum = 0;
@@ -119,10 +119,10 @@ console.log(add(10, 20, 30)); // 60
 
 ## 7. ES6 Features
 ### 7.1 Default Parameters
-📖 Definition:
+### 📖 Definition:
 Allows setting default values for parameters in case no argument is passed.
 
-🧪 Example:
+### 🧪 Example:
 ```js
 function greet(name = "Guest") {
   return "Hello " + name;
@@ -131,10 +131,10 @@ console.log(greet()); // "Hello Guest"
 ```
 
 ### 7.2 Spread Operator (...)
-📖 Definition:
+### 📖 Definition:
 Used to spread/expand arrays or objects.
 
-🧪 Example (Array):
+### 🧪 Example (Array):
 
 ```js
 const a = [1, 2];
@@ -143,7 +143,7 @@ const merged = [...a, ...b];
 console.log(merged); // [1, 2, 3, 4]
 ```
 
-🧪 Example (Object):
+### 🧪 Example (Object):
 ```js
 const obj1 = { x: 1 };
 const obj2 = { y: 2 };

@@ -113,12 +113,12 @@
 
 // Spread Operator
 
-// const num1 = [ 10, 20, 30, 40, 50 ];
-// const num2 = [ 50, 40, 30, 20, 10 ];
+const num1 = [ 10, 20, 30, 40, 50 ];
+const num2 = [ 50, 40, 30, 20, 10 ];
 
-// const joinArray = {...num1, ...num2};
+const joinArray = {...num1, ...num2};
+console.log(joinArray);
 
-// console.log(joinArray);
 
 
 function add() {
