@@ -20,7 +20,7 @@ q
 ## 💻 Example
 
 ```js
-const user = { name: "Sudhanshu", age: 21 };
+const user = { name: "Sudhanshu", age: 20 };
 
 Object.seal(user);    // You can change age, but not add or delete anything
 Object.freeze(user);  // You can't do anything to the object now
