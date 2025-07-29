@@ -21,7 +21,7 @@ function a(b) {
 }
 
 a.userName = "Priyanshu";
-a.userAge = 20;
+a.userAge = 13;
 
 console.dir(a);
 

@@ -70,6 +70,7 @@ Used to execute a function once for each array element. It is a method of the Ar
 array.forEach(function(value, index) {
     console.log(index + " → " + value);
 });
+
 ```
 
 ## 🧠 When to Use Which Loop

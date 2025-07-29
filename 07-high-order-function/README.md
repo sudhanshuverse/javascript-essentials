@@ -10,7 +10,7 @@ This concept is possible because in JavaScript, functions are first-class citize
 
 ## 📌 What is a Higher-Order Function?
 
-A **Higher-Order Function** is a function that can:
+**Higher-Order Function** is a function that can:
 - Accept other functions as parameters
 - Return a new function as output
 

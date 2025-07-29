@@ -5,6 +5,7 @@ This small project explains how to stop changes in JavaScript objects.
 ## 🧊 What They Do
 
 - **Object.seal(object)**  
+q
   ✅ You can change values  
   ❌ You can't add or delete properties
 
@@ -23,5 +24,4 @@ const user = { name: "Sudhanshu", age: 21 };
 
 Object.seal(user);    // You can change age, but not add or delete anything
 Object.freeze(user);  // You can't do anything to the object now
-
-
+```

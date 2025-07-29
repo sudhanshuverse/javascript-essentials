@@ -34,5 +34,5 @@ const maths = {
 };
 
 // Method calls
-console.log(maths.add(2, 3));      // 5
-console.log(maths.square(4));      // 16
+console.log(maths.add(2, 3));      // Output 5
+console.log(maths.square(4));      // Output 16

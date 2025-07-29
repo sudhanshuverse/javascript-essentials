@@ -1,4 +1,4 @@
-// ✅ 1. setTimeout Examples
+// 1. setTimeout Examples
 
 // Function reference
 function showMessage() {
@@ -11,19 +11,19 @@ const timer2 = setTimeout(() => {
     console.log("setTimeout: Hello from arrow function!");
 }, 2000);
 
-// ✅ 2. setInterval Example
+// 2. setInterval Example
 const intervalId = setInterval(() => {
     console.log("setInterval: Running every 5 seconds.");
 }, 5000);
 
-// ✅ 3. Clearing Timers
+// 3. Clearing Timers
 setTimeout(() => {
     clearTimeout(timer1);
     clearInterval(intervalId);
     console.log("Timers cleared after 10 seconds.");
 }, 10000);
 
-// ✅ 4. Event Loop Demo
+// 4. Event Loop Demo
 console.log("👋 Synchronous: Start");
 
 function hello() {
@@ -38,7 +38,7 @@ hello();
 
 setTimeout(hello, 0); // Pushed to Web API and executed later
 
-console.log("👋 Synchronous: End");
+console.log("Synchronous: End");
 
 // Output:
 // Synchronous: Start

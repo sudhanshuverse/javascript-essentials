@@ -62,9 +62,7 @@ let x = 5;
 
 #### 🔍 Explanation:
 - x is hoisted but not initialized → it's in the TDZ
-
 - When you try to access it before the line let x = 5;, it throws a ReferenceError
-
 - The TDZ ends at the line where the variable is declared
 
 

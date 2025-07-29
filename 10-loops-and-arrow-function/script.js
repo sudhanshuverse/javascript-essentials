@@ -60,13 +60,13 @@ const fruits = ['Orange', 'Grapes', 'Banana', 'Apple', 'Mango'];
 // }
 
 // Fastest vay to get the key and value of object
-// const personKey = Object.keys(person);
-// const personValue = Object.values(person);
-// const personEntries = Object.entries(person);
+const personKey = Object.keys(person);
+const personValue = Object.values(person);
+const personEntries = Object.entries(person);
 
-// for (const key of personKey) {
-//     console.log(key);
-// }
+for (const key of personKey) {
+    console.log(key);
+}
 
 
 fruits.forEach(fruits)

@@ -118,8 +118,10 @@ console.log(add(10, 20, 30)); // 60
 - Useful when the number of arguments is unknown.
 
 ## 7. ES6 Features
+
 ### 7.1 Default Parameters
-### 📖 Definition:
+
+## 📖 Definition:
 Allows setting default values for parameters in case no argument is passed.
 
 ### 🧪 Example:

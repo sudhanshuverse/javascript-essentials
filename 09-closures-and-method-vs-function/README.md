@@ -75,9 +75,10 @@ console.log(maths.square(4));      // Output: 16
 ```
 
 ### ✅ Output:
+```js
 5
 16
-
+```
 
 ## ✨ Key Points
 ### 🔐 Closure:

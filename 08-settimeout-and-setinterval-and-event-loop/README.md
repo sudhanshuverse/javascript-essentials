@@ -7,7 +7,7 @@ This project demonstrates how JavaScript handles asynchronous functions using `s
 
 The image below shows the **JavaScript Event Loop** in action, explaining how timers move between Call Stack, Web APIs, and Callback Queue:
 
-![Event Loop Demo](./screenshot.gif)
+![Event Loop Demo(Preview)](./screenshot.gif)
 
 
 

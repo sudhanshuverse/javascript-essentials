@@ -11,7 +11,7 @@
 
         <h1>JavaScript Call Stack</h1>
 
-        <h2>🔹 What is a Call Stack?</h2>
+        <h2> What is a Call Stack?</h2>
         <p>
             A <strong>Call Stack</strong> is a data structure used by the
             JavaScript engine to keep track of function invocations.
@@ -20,7 +20,7 @@
             When the function returns, it's removed (popped) from the stack.
         </p>
 
-        <h2>📘 Example 1: Normal Function Call Stack</h2>
+        <h2>Example 1: Normal Function Call Stack</h2>
         <pre>
             <code>
                 function sayHi() {
@@ -46,7 +46,7 @@
 
         <button onclick="runNormalStack()">Run Normal Call Stack</button>
 
-        <h2>📘 Example 2: Infinite Recursion (Stack Overflow)</h2>
+        <h2>Example 2: Infinite Recursion (Stack Overflow)</h2>
         <pre>
             <code>
                 function introduceMe() {
@@ -54,13 +54,13 @@
                     introduceMe(); // Infinite Recursion
                 }
 
-                introduceMe(); // ⚠️ Causes Maximum Call Stack Size Exceeded
+                introduceMe(); // Causes Maximum Call Stack Size Exceeded
             </code>
         </pre>
 
         <button onclick="runInfiniteStack()">Run Infinite Stack (Be Careful!)</button>
 
-        <h2>✅ Why is the Call Stack Important?</h2>
+        <h2>Why is the Call Stack Important?</h2>
         <ul>
             <li>Tracks the order of function calls</li>
             <li>Helps in debugging (stack traces)</li>
@@ -68,7 +68,7 @@
             <li>Manages memory allocation during function execution</li>
         </ul>
 
-        <h2>📌 Output</h2>
+        <h2>Output</h2>
         <p>Open your browser's <strong>Console (F12)</strong> to view the call
             stack output when you run the examples.</p>
     </body>

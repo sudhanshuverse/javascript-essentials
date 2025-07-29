@@ -11,8 +11,8 @@
 
 <body>
     <h1>JavaScript Hoisting</h1>
-    <!-- 🔹 Two Phase Explanation -->
-    <h2>🔹 How JavaScript Runs Code: Two Phases</h2>
+    <!--Two Phase Explanation -->
+    <h2>How JavaScript Runs Code: Two Phases</h2>
     <p>JavaScript runs code in two main steps:</p>
     <ol>
         <li>
@@ -54,8 +54,8 @@
             The code runs line-by-line, assigning values to variables and running functions.
         </li>
     </ol>
-    <!-- 🔹 Hoisting Definition -->
-    <h2>🔹 What is Hoisting?</h2>
+    <!-- Hoisting Definition -->
+    <h2>What is Hoisting?</h2>
     <p>
         <strong>Hoisting</strong>
         is when JavaScript prepares all variable and function declarations before running the code, so they can be used
@@ -79,8 +79,8 @@
         <code>var x = function() {}</code>
         ) aren't usable until assigned.
     </p>
-    <!-- 🔹 Function Hoisting Example -->
-    <h2>🔹 Example of Function Hoisting</h2>
+    <!--Function Hoisting Example -->
+    <h2>Example of Function Hoisting</h2>
     <p>This function works before it's defined because function declarations are fully hoisted.</p>
     <pre>
     <code>
@@ -92,8 +92,8 @@ console.log("Hello");
     </pre>
     <button onclick="hi()">Click to Call Hoisted Function</button>
 
-    <!-- 🔹 Function Not Hoisting Example -->
-<h2>🔹 Example of Function that is Not Hoisted (Function Expression)</h2>
+    <!--Function Not Hoisting Example -->
+<h2>Example of Function that is Not Hoisted (Function Expression)</h2>
 <p>This function does <strong>not</strong> work before it's defined because function expressions are not hoisted.</p>
 
 <pre>
@@ -108,8 +108,8 @@ hi(); // Output: Hello
 </code>
 </pre>
 
-    <!-- 🔹 Temporal Dead Zone -->
-    <h2>🔹 Temporal Dead Zone (TDZ)</h2>
+    <!--Temporal Dead Zone -->
+    <h2>Temporal Dead Zone (TDZ)</h2>
     <p>
         Variables with
         <code>let</code>
@@ -124,5 +124,4 @@ console.log(x); // ReferenceError: Cannot access 'x' before initialization let x
             </code>
         </pre>
 </body>
-
 </html>
