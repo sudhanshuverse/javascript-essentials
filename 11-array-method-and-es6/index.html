@@ -13,6 +13,7 @@
 
     <h1>JavaScript Array Methods & ES6 Concepts</h1>
     <hr>
+
     <h2>1. <code>map()</code> Method</h2>
     <p><strong>Definition:</strong> <code>map()</code> creates a new array by transforming every element in an array
         using a callback function.</p>
@@ -21,14 +22,15 @@
         <li>Returns a <strong>new array</strong>.</li>
         <li>Does not modify the original array.</li>
     </ul>
-
     <pre><code>
 const months = ['January', 'February', 'March'];
 const upperMonths = months.map(month => month.toUpperCase());
 console.log(upperMonths);
 </code></pre>
     <p class="output">Output: ["JANUARY", "FEBRUARY", "MARCH"]</p>
+
     <hr>
+
     <h2>2. <code>filter()</code> Method</h2>
     <p><strong>Definition:</strong> Returns a new array containing elements that match a given condition.</p>
     <p><strong>Important Points:</strong></p>
@@ -36,7 +38,6 @@ console.log(upperMonths);
         <li>Used for filtering based on a condition.</li>
         <li>Returns only elements that evaluate <code>true</code> in the callback.</li>
     </ul>
-
     <pre><code>
 const nums = [1, 2, 3, 4, 5];
 const even = nums.filter(num => num % 2 === 0);
@@ -53,7 +54,6 @@ console.log(even);
         <li>Takes a callback with an <code>accumulator</code> and <code>current value</code>.</li>
         <li>Initial value is passed as the second argument.</li>
     </ul>
-
     <pre><code>
 const nums = [1, 2, 3];
 const sum = nums.reduce((acc, val) => acc + val, 0);
@@ -66,7 +66,6 @@ console.log(sum);
     <h2>4. <code>some()</code> Method</h2>
     <p><strong>Definition:</strong> Returns <code>true</code> if <strong>at least one</strong> element satisfies the
         condition.</p>
-
     <pre><code>
 const nums = [5, 10, 15];
 const hasBig = nums.some(n => n > 12);
@@ -79,7 +78,6 @@ console.log(hasBig);
     <h2>5. <code>every()</code> Method</h2>
     <p><strong>Definition:</strong> Returns <code>true</code> if <strong>all elements</strong> satisfy the condition.
     </p>
-
     <pre><code>
 const nums = [5, 10, 15];
 const allBig = nums.every(n => n > 2);
@@ -97,7 +95,6 @@ console.log(allBig);
         <li>Works only in <strong>regular functions</strong> (not arrow functions).</li>
         <li>Useful for working with unknown number of parameters.</li>
     </ul>
-
     <pre><code>
 function add() {
     let sum = 0;
@@ -106,7 +103,6 @@ function add() {
     }
     return sum;
 }
-
 console.log(add(10, 20, 30));
 </code></pre>
     <p class="output">Output: 60</p>
@@ -117,7 +113,6 @@ console.log(add(10, 20, 30));
 
     <h3>7.1 Default Parameters</h3>
     <p><strong>Definition:</strong> You can set default values for function parameters.</p>
-
     <pre><code>
 function greet(name = "Guest") {
     return "Hello " + name;
@@ -128,7 +123,6 @@ console.log(greet());
 
     <h3>7.2 Spread Operator (<code>...</code>)</h3>
     <p><strong>Definition:</strong> Allows iterables (arrays, objects) to be expanded.</p>
-
     <pre><code>
 const arr1 = [1, 2, 3];
 const arr2 = [4, 5];
@@ -154,7 +148,6 @@ console.log(merged);
         <li>Uses the same syntax as spread <code>...</code>, but for gathering arguments.</li>
         <li>Rest parameters must be the <strong>last</strong> in the function definition.</li>
     </ul>
-
     <pre><code>
 function sumAll(...numbers) {
     return numbers.reduce((total, num) => total + num, 0);
@@ -162,6 +155,46 @@ function sumAll(...numbers) {
 console.log(sumAll(5, 10, 15));
 </code></pre>
     <p class="output">Output: 30</p>
+
+    <hr>
+
+    <h2>8. Destructuring</h2>
+    <p><strong>Definition:</strong> Destructuring allows unpacking values from arrays or properties from objects into
+        distinct variables.</p>
+
+    <h3>8.1 Object Destructuring</h3>
+    <pre><code>
+const user = {
+    name: 'Priyanshu',
+    age: 15,
+    address: {
+        city: 'Dehradun',
+        state: 'Utrakhand'
+    }
+};
+
+const { name, age } = user;
+console.log(name, age); // Output: Priyanshu 15
+</code></pre>
+    <p class="output">Output: Priyanshu 15</p>
+
+    <h3>8.2 Destructuring in Function Parameters</h3>
+    <pre><code>
+function intro({ age, name }) {
+    console.log(age, name);
+}
+
+intro(user);
+</code></pre>
+    <p class="output">Output: 15 Priyanshu</p>
+
+    <h3>8.3 Array Destructuring</h3>
+    <pre><code>
+const colors = ['red', 'green', 'yellow', 'pink', 'black'];
+const [firstColor, secondColor] = colors;
+console.log(firstColor, secondColor);
+</code></pre>
+    <p class="output">Output: red green</p>
 
     <hr>
 
@@ -176,6 +209,7 @@ console.log(sumAll(5, 10, 15));
         <li><code>Default Parameters</code>: define fallback values</li>
         <li><code>Spread Operator</code>: combine arrays/objects or expand them</li>
         <li><code>Rest Parameters</code>: gather multiple arguments into an array</li>
+        <li><code>Destructuring</code>: extract values from objects or arrays</li>
     </ul>
 
 </body>

@@ -136,16 +136,43 @@
 
 
 // Rest Parameters
-const nums1 = [1,2,3,4];
+// const nums1 = [1,2,3,4];
 
-function add(...nums) {
-    console.log('nums:', nums);
-    let sum = 0;
-    for(let i = 0; i < nums.length; i++) {
-        sum = sum + nums[i];
-    }
-    return sum;
+// function add(...nums) {
+//     console.log('nums:', nums);
+//     let sum = 0;
+//     for(let i = 0; i < nums.length; i++) {
+//         sum = sum + nums[i];
+//     }
+//     return sum;
+// }
+
+
+// console.log( add( ...nums1 ));
+
+
+
+
+// Destructing
+
+const colors = [ 'red', 'green', 'yellow', 'pink', 'black' ];
+
+const user = {
+    name: 'Priyanshu',
+    age: 15,
+    address: {
+        city: 'Dehradun',
+        state: 'Utrakhand'
+    },
 }
 
 
-console.log( add( ...nums1 ));
+const { name, age } = user;
+
+console.log( name, age );
+
+function intro ( { age, name } ) {
+    console.log( age, name );
+}
+
+intro( user );
