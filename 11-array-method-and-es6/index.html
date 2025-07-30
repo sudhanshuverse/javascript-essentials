@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
 
     <h1>JavaScript Array Methods & ES6 Concepts</h1>
@@ -145,6 +146,23 @@ console.log(merged);
 </code></pre>
     <p class="output">Output: { a: 1, b: 2 }</p>
 
+    <h3>7.3 Rest Parameters</h3>
+    <p><strong>Definition:</strong> Rest parameters allow a function to accept an indefinite number of arguments as an
+        array.</p>
+    <p><strong>Important Points:</strong></p>
+    <ul>
+        <li>Uses the same syntax as spread <code>...</code>, but for gathering arguments.</li>
+        <li>Rest parameters must be the <strong>last</strong> in the function definition.</li>
+    </ul>
+
+    <pre><code>
+function sumAll(...numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+console.log(sumAll(5, 10, 15));
+</code></pre>
+    <p class="output">Output: 30</p>
+
     <hr>
 
     <h2> Summary</h2>
@@ -157,7 +175,9 @@ console.log(merged);
         <li><code>arguments</code>: all passed arguments in a function</li>
         <li><code>Default Parameters</code>: define fallback values</li>
         <li><code>Spread Operator</code>: combine arrays/objects or expand them</li>
+        <li><code>Rest Parameters</code>: gather multiple arguments into an array</li>
     </ul>
 
 </body>
+
 </html>
