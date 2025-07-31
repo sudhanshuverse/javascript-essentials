@@ -51,7 +51,7 @@ There are 3 types:
 
 This code shows how execution context works with variables and functions:
 
-```javascript
+```js
 debugger;
 
 fun1();
@@ -69,3 +69,4 @@ function fun1() {
 function fun2(a, b) {
     return a + b;
 }
+```
