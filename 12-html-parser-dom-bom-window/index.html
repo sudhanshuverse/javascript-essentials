@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window, BOM, DOM, Node, and HTML Parser Explained</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 960px;
+            margin: auto;
+            padding: 20px;
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #1a1a1a;
+            margin-top: 30px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+
+        pre {
+            background: #efefef;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            background-color: #e1e1e1;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Window, BOM, DOM, Node, and HTML Parser Explained in Depth</h1>
+    </header>
+
+    <main>
+
+        <!-- HTML PARSER -->
+        <section>
+            <h2>1. HTML Parser</h2>
+            <p>The <strong>HTML parser</strong> in JavaScript is responsible for reading and interpreting HTML code, converting it into
+            a structured format—usually a <strong>DOM (Document Object Model)</strong> tree—that can be manipulated by JavaScript.
+            This process, known as <em>parsing</em>, is essential for browsers and tools to understand and work with HTML content
+            effectively.</p>
+
+            <h3>Key Points:</h3>
+            <ul>
+                <li>It starts parsing HTML from top to bottom.</li>
+                <li>Converts tags into nodes and creates a DOM tree.</li>
+                <li>Works closely with the CSS and JavaScript engines.</li>
+                <li>JavaScript can interrupt parsing using <code>&lt;script&gt;</code> tags.</li>
+            </ul>
+
+            <h3>Example:</h3>
+            <pre><code>
+// This code relies on the DOM created by the HTML parser
+console.log(document.body.children[0].innerText); // Logs text of first child of body
+            </code></pre>
+        </section>
+
+        <!-- DOM -->
+        <section>
+            <h2>2. Document Object Model (DOM)</h2>
+            <p>The <strong>DOM</strong> is a programming interface that represents the structure of an HTML or XML
+                document as a tree of objects. It allows you to <strong>read, manipulate, and modify</strong> the
+                content and structure of web pages using JavaScript.</p>
+
+            <h3>Key Points:</h3>
+            <ul>
+                <li>Each HTML element is a <em>node</em> in the DOM tree.</li>
+                <li>It is <strong>live</strong>, meaning changes reflect immediately on the page.</li>
+                <li>Supports methods like <code>getElementById</code>, <code>querySelector</code>, etc.</li>
+            </ul>
+
+            <h3>Example:</h3>
+            <pre><code>
+// Changes heading text using DOM
+document.querySelector('h1').innerText = 'Welcome to DOM World!';
+            </code></pre>
+        </section>
+        <!-- BOM -->
+        <section>
+            <h2>4. Browser Object Model (BOM)</h2>
+            <p>The <strong>Browser Object Model (BOM)</strong> provides JavaScript access to browser-specific features
+                like navigation, screen size, and browser history. It is separate from the content of the page.</p>
+
+            <h3>Key Points:</h3>
+            <ul>
+                <li>Not standardized like DOM (varies across browsers).</li>
+                <li>Interacts with browser components like <code>navigator</code>, <code>location</code>,
+                    <code>history</code>, etc.
+                </li>
+                <li>Allows you to control the browser window/tab.</li>
+            </ul>
+
+            <h3>Example:</h3>
+            <pre><code>
+console.log('Current URL:', window.location.href);
+console.log('Browser Info:', window.navigator.userAgent);
+            </code></pre>
+        </section>
+
+        <!-- WINDOW OBJECT -->
+        <section>
+            <h2>5. Window Object</h2>
+            <p>The <strong>Window object</strong> is the <em>global object</em> for JavaScript in the browser. Every
+                global variable or function is actually a property or method of <code>window</code>.</p>
+
+            <h3>Key Points:</h3>
+            <ul>
+                <li>It includes the BOM and gives access to the DOM.</li>
+                <li>Represents the browser tab or window itself.</li>
+                <li>Functions like <code>alert()</code> or <code>setTimeout()</code> are methods of <code>window</code>.
+                </li>
+            </ul>
+
+            <h3>Example:</h3>
+            <pre><code>
+window.alert('Hello from the Window object!');
+console.log('Window dimensions:', window.innerWidth, 'x', window.innerHeight);
+            </code></pre>
+        </section>
+
+        <!-- COMPARISON TABLE -->
+        <section>
+            <h2>6. Comparison Table: Window vs BOM vs DOM vs HTML Parser</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Window</th>
+                        <th>BOM</th>
+                        <th>DOM</th>
+                        <th>HTML Parser</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Definition</strong></td>
+                        <td>Global object for browser tab</td>
+                        <td>Browser feature interface</td>
+                        <td>Page content interface</td>
+                        <td>Engine to convert HTML to DOM</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contains</strong></td>
+                        <td>DOM + BOM</td>
+                        <td>navigator, screen, history</td>
+                        <td>document, elements</td>
+                        <td>HTML to tree converter</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Use Case</strong></td>
+                        <td>Global browser-level control</td>
+                        <td>Browser-related tasks</td>
+                        <td>Manipulate HTML content</td>
+                        <td>Builds DOM from HTML</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Examples</strong></td>
+                        <td>alert(), setTimeout()</td>
+                        <td>window.location.href</td>
+                        <td>document.querySelector()</td>
+                        <td>Internal process (not accessed directly)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+
+</html>
