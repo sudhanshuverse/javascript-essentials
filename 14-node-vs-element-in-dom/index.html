@@ -2,129 +2,135 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Node vs Element in the DOM</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Node vs Element in the DOM</h1>
+<div class="container">
+    <h1>Node vs Element in the DOM</h1>
 
-        <div class="section">
-            <h2>Definition</h2>
-            <p><strong>Node:</strong> A generic representation of any item in the DOM tree, including elements, text,
-                comments, attributes, and more.</p>
-            <p><strong>Element:</strong> A specific type of node that represents HTML or XML tags like
-                <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, etc., with <code>nodeType === 1</code>.
-            </p>
-        </div>
+    <div class="section">
+        <h2>🔷 What is a Node in the DOM?</h2>
+        <p>
+            A <strong>Node</strong> is the most basic unit of the DOM (Document Object Model).
+            It represents a single point in the document tree and can be of various types.
+        </p>
+        <p>In the DOM, everything is a node, including:</p>
+        <ul>
+            <li><strong>Element Nodes</strong> - like <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code></li>
+            <li><strong>Text Nodes</strong> - like the text inside elements (<code>"Hello"</code>)</li>
+            <li><strong>Comment Nodes</strong> - like <code>&lt;!-- comment --&gt;</code></li>
+            <li><strong>Document Node</strong> - represents the entire HTML document</li>
+            <li><strong>Attribute Nodes</strong> - like <code>class="header"</code> (rarely used now)</li>
+        </ul>
+    </div>
 
-        <div class="section">
-            <h2>Important Points</h2>
-            <ul>
-                <li>Everything in the DOM is a node.</li>
-                <li>Elements are a type of node (element nodes).</li>
-                <li><strong>All elements are nodes</strong>, but <strong>not all nodes are elements</strong>.</li>
-                <li>Node types include: Document, Element, Text, Comment, Attribute, DocumentFragment, etc.</li>
-                <li>Whitespace, comments, and text are nodes but not elements.</li>
-            </ul>
-        </div>
+    <div class="section">
+        <h2>🔷 What is an Element in the DOM?</h2>
+        <p>
+            An <strong>Element</strong> is a specific type of node that represents an HTML or XML tag.
+            It is the most commonly used node type in web development.
+        </p>
+        <ul>
+            <li>Represents a tag: <code>&lt;div&gt;</code>, <code>&lt;span&gt;</code>, <code>&lt;input&gt;</code></li>
+            <li>Has useful properties: <code>id</code>, <code>className</code>, <code>innerHTML</code></li>
+            <li>Always has <code>nodeType === 1</code></li>
+        </ul>
+    </div>
 
-        <div class="section">
-            <h2>Examples (Code)</h2>
-            <p><strong>Working with Nodes:</strong></p>
-            <pre><code>
-// Access all child nodes (includes elements, text, comments)
-let allNodes = element.childNodes;
+    <div class="section">
+        <h2>🔁 Difference Between Node and Element</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Node</th>
+                    <th>Element</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Definition</strong></td>
+                    <td>Generic object in the DOM</td>
+                    <td>HTML/XML tag</td>
+                </tr>
+                <tr>
+                    <td><strong>nodeType</strong></td>
+                    <td>Varies: 1, 3, 8, 9, etc.</td>
+                    <td>Always 1</td>
+                </tr>
+                <tr>
+                    <td><strong>Includes</strong></td>
+                    <td>Elements, Text, Comments, Document, Attributes, etc.</td>
+                    <td>Only HTML/XML tag elements</td>
+                </tr>
+                <tr>
+                    <td><strong>Common Properties</strong></td>
+                    <td><code>nodeType</code>, <code>nodeName</code>, <code>nodeValue</code></td>
+                    <td><code>id</code>, <code>className</code>, <code>innerHTML</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Access</strong></td>
+                    <td><code>childNodes</code> (includes all node types)</td>
+                    <td><code>children</code> (includes only elements)</td>
+                </tr>
+                <tr>
+                    <td><strong>Use Case</strong></td>
+                    <td>Full DOM traversal and manipulation</td>
+                    <td>UI design, styling, and content structure</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>📜 JavaScript Code Examples</h2>
+
+        <h3>Working with Nodes:</h3>
+        <pre><code>// Access all child nodes (includes text and comments)
+let allNodes = document.body.childNodes;
 
 // Create different types of nodes
-document.createTextNode("Hello");
-document.createComment("This is a comment");
-document.createElement("div"); // element node
+let textNode = document.createTextNode("Hello World");
+let commentNode = document.createComment("This is a comment");
+let elementNode = document.createElement("div");
             </code></pre>
 
-            <p><strong>Working with Elements:</strong></p>
-            <pre><code>
-let div = document.createElement("div");
+        <h3>Working with Elements:</h3>
+        <pre><code>let div = document.createElement("div");
 div.className = "box";
 div.innerHTML = "This is an element";
 document.body.appendChild(div);
             </code></pre>
-        </div>
-
-        <div class="section">
-            <h2>All Types of Nodes</h2>
-            <ul>
-                <li><code>Document</code> (nodeType 9) - Represents the entire HTML or XML document</li>
-                <li><code>DocumentType</code> (nodeType 10) - e.g., <code>&lt;!DOCTYPE html&gt;</code></li>
-                <li><code>Element</code> (nodeType 1) - HTML tags like <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>
-                </li>
-                <li><code>Text</code> (nodeType 3) - The text inside elements</li>
-                <li><code>Comment</code> (nodeType 8) - Comments like <code>&lt;!-- comment --&gt;</code></li>
-                <li><code>Attribute</code> (nodeType 2) - Attributes like <code>id="main"</code> (rarely used as node)
-                </li>
-                <li><code>DocumentFragment</code> (nodeType 11) - A lightweight container for DOM manipulation</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Difference Table: Node vs Element</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Feature</th>
-                        <th>Node</th>
-                        <th>Element</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Definition</td>
-                        <td>Generic object in the DOM tree</td>
-                        <td>Represents HTML/XML tags</td>
-                    </tr>
-                    <tr>
-                        <td>nodeType</td>
-                        <td>Varies: 1 (element), 3 (text), 8 (comment), etc.</td>
-                        <td>Always 1</td>
-                    </tr>
-                    <tr>
-                        <td>Includes</td>
-                        <td>Elements, text, comments, document, etc.</td>
-                        <td>Only HTML/XML tag elements</td>
-                    </tr>
-                    <tr>
-                        <td>Common Properties</td>
-                        <td><code>nodeName</code>, <code>nodeType</code>, <code>nodeValue</code></td>
-                        <td><code>id</code>, <code>className</code>, <code>innerHTML</code></td>
-                    </tr>
-                    <tr>
-                        <td>Access Collection</td>
-                        <td><code>childNodes</code></td>
-                        <td><code>children</code></td>
-                    </tr>
-                    <tr>
-                        <td>Use Case</td>
-                        <td>Full DOM traversal or manipulation</td>
-                        <td>User interface interactions & styling</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="section">
-            <h2>Conclusion</h2>
-            <ul>
-                <li>The DOM is a tree of <strong>nodes</strong>, each representing part of the document.</li>
-                <li>An <strong>element</strong> is a node that specifically represents an HTML tag.</li>
-                <li><strong>All elements are nodes</strong>, but <strong>not all nodes are elements</strong>.</li>
-                <li>Examples of non-element nodes include <code>&lt;!DOCTYPE html&gt;</code>, comments, and text nodes.
-                </li>
-            </ul>
-        </div>
     </div>
+
+    <div class="section">
+        <h2>🧩 All Types of Nodes (by <code>nodeType</code>)</h2>
+        <ul>
+            <li><strong>Document</strong> (nodeType: 9) – Entire HTML document</li>
+            <li><strong>DocumentType</strong> (nodeType: 10) – <code>&lt;!DOCTYPE html&gt;</code></li>
+            <li><strong>Element</strong> (nodeType: 1) – HTML elements like <code>&lt;div&gt;</code></li>
+            <li><strong>Text</strong> (nodeType: 3) – Text within elements</li>
+            <li><strong>Comment</strong> (nodeType: 8) – Comments in HTML</li>
+            <li><strong>Attribute</strong> (nodeType: 2) – DOM representation of attributes</li>
+            <li><strong>DocumentFragment</strong> (nodeType: 11) – Lightweight DOM for temporary elements</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>✅ Conclusion</h2>
+        <ul>
+            <li>The DOM is a tree-like structure made up of different <strong>nodes</strong>.</li>
+            <li><strong>Elements</strong> are just one type of node (the most important for HTML content).</li>
+            <li><strong>All elements are nodes</strong>, but <strong>not all nodes are elements</strong>.</li>
+            <li>Understanding this helps in DOM traversal, event handling, and web development.</li>
+        </ul>
+    </div>
+</div>
 </body>
+
 </html>
