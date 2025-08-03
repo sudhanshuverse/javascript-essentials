@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>appendChild() vs append()</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+<h1>appendChild() and append()</h1>
+
+<section>
+    <h2>What Are They & When To Use</h2>
+    <p><strong><code>appendChild()</code></strong> and <strong><code>append()</code></strong> are JavaScript methods
+        used to insert content into the DOM (Document Object Model).</p>
+    <ul>
+        <li><strong><code>appendChild()</code></strong> is used when you want to <em>append exactly one node</em> to
+            another element. Ideal for structured DOM manipulation where you want the method to return the inserted
+            node.</li>
+        <li><strong><code>append()</code></strong> is more flexible — it allows you to add <em>multiple nodes and/or
+                text</em> at once. Use it when you need to add a mix of elements and text dynamically.</li>
+        <li>If you're supporting older browsers like Internet Explorer, prefer <code>appendChild()</code> as
+            <code>append()</code> is not available there.</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Definitions</h2>
+    <p><strong><code>appendChild()</code></strong>: Appends a single <strong>Node</strong> to the end of the list of
+        children of a specified parent node.</p>
+    <p><strong><code>append()</code></strong>: Appends one or more <strong>Nodes or strings</strong> to a parent
+        node. More flexible than <code>appendChild()</code>.</p>
+</section>
+
+<section>
+    <h2>Important Points</h2>
+    <ul>
+        <li><code>appendChild()</code> allows only a single <strong>Node</strong>.</li>
+        <li><code>append()</code> allows multiple <strong>Nodes and/or text</strong>.</li>
+        <li><code>appendChild()</code> returns the appended node; <code>append()</code> returns
+            <code>undefined</code>.
+        </li>
+        <li><code>append()</code> is not supported in Internet Explorer.</li>
+    </ul>
+</section>
+
+<section>
+    <h2>💡 Syntax & Examples</h2>
+    <p><strong>Syntax:</strong></p>
+    <p><code>parent.appendChild(childNode)</code></p>
+    <p><code>parent.append(node1, node2, "text")</code></p>
+
+    <p><strong>Example using <code>appendChild()</code>:</strong></p>
+    <pre><code>
+const parent = document.getElementById("container");
+const newDiv = document.createElement("div");
+newDiv.textContent = "Hello";
+parent.appendChild(newDiv);
+        </code></pre>
+
+    <p><strong>Example using <code>append()</code>:</strong></p>
+    <pre><code>
+const parent = document.getElementById("container");
+const newDiv1 = document.createElement("div");
+const newDiv2 = document.createElement("div");
+newDiv1.textContent = "Hi";
+newDiv2.textContent = "There";
+parent.append(newDiv1, newDiv2, " Hello Bro");
+        </code></pre>
+</section>
+
+<section>
+    <h2>Difference Table</h2>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>appendChild()</th>
+            <th>append()</th>
+        </tr>
+        <tr>
+            <td>Accepts Text Nodes?</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>Accepts Multiple Arguments?</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>Return Value</td>
+            <td>Appended Node</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>Browser Compatibility</td>
+            <td>All Browsers</td>
+            <td>Not in IE</td>
+        </tr>
+        <tr>
+            <td>Use Case</td>
+            <td>Strict DOM Manipulation</td>
+            <td>Flexible Content Insertion</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h2>Summary</h2>
+    <ul>
+        <li>Use <code>appendChild()</code> when appending one node and need a return value.</li>
+        <li>Use <code>append()</code> for adding text and/or multiple elements together.</li>
+        <li>Check browser compatibility before using <code>append()</code>.</li>
+    </ul>
+</section>
+
+<h2>Live Output Area</h2>
+<div id="container"></div>
+
+
+</body>
+</html>
