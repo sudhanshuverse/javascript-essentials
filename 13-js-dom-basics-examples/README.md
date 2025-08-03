@@ -121,6 +121,5 @@ const form = input.parentElement;
 ```
 
 ### 📌 Important Points:
-Use previousElementSibling to get the label or heading just before an input.
-
-parentElement is useful for applying styles or validation to a wrapper section (like a form group).
+- Use previousElementSibling to get the label or heading just before an input.
+- parentElement is useful for applying styles or validation to a wrapper section (like a form group).
