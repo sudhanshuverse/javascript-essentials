@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM Manipulation: createElement & remove</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <h1>JavaScript DOM Manipulation: document.createElement() and Element.remove()</h1>
+
+    <div class="section">
+        <h2>1. document.createElement()</h2>
+        <h3>Definition</h3>
+        <p><code>document.createElement()</code> is a JavaScript method that creates a new HTML element node with the
+            specified tag name. The created element exists in memory and must be appended to the DOM to be visible.</p>
+
+        <h3>Important Points</h3>
+        <ul>
+            <li>Creates HTML elements (e.g., <code>div</code>, <code>img</code>, <code>p</code>) dynamically.</li>
+            <li>Returns a new DOM element node.</li>
+            <li>Customize elements using <code>setAttribute()</code>, <code>classList.add()</code>, or
+                <code>innerText</code>.</li>
+            <li>Elements are not displayed until appended using methods like <code>append()</code> or
+                <code>appendChild()</code>.</li>
+            <li>Ideal for generating dynamic content based on user input or data.</li>
+            <li>Efficient for creating elements programmatically, but requires proper DOM insertion.</li>
+        </ul>
+
+        <h3>Syntax</h3>
+        <pre><code>const element = document.createElement(tagName);</code></pre>
+        <p><strong>tagName</strong>: A string specifying the element type (e.g., <code>'div'</code>, <code>'img'</code>,
+            <code>'p'</code>).<br>
+            <strong>Returns</strong>: A new HTML element node.
+        </p>
+
+        <h3>Example</h3>
+        <p>Create a <code>div</code>, add a class, set text content, and append it to the body:</p>
+        <pre><code>const div = document.createElement('div');
+div.classList.add('my-class');
+div.innerText = 'Hello, World!';
+document.body.append(div);</code></pre>
+
+        <h3>Practical Example</h3>
+        <p>This example generates Pokémon images with their index numbers based on user input.</p>
+        <button onclick="fun()">Generate Pokémon Images</button>
+        <div class="container" id="create-container"></div>
+    </div>
+
+    <div class="section">
+        <h2>2. Element.remove()</h2>
+        <h3>Definition</h3>
+        <p><code>Element.remove()</code> is a JavaScript method that removes an element (and its children) from the DOM.
+            It is called directly on the element, requiring no reference to its parent.</p>
+
+        <h3>Important Points</h3>
+        <ul>
+            <li>Removes the specified element from the DOM instantly.</li>
+            <li>No return value; modifies the DOM directly.</li>
+            <li>Supported in modern browsers (since 2014); use <code>parentNode.removeChild()</code> for older browsers.
+            </li>
+            <li>Useful for cleaning up dynamic content or responding to user actions.</li>
+            <li>Simple and efficient, as it doesn’t require parent node traversal.</li>
+            <li>Only removes the element it’s called on; cannot remove multiple elements at once.</li>
+        </ul>
+
+        <h3>Syntax</h3>
+        <pre><code>element.remove();</code></pre>
+        <p><strong>element</strong>: The DOM element to remove.<br>
+            No parameters or return value.</p>
+
+        <h3>Example</h3>
+        <p>Remove a specific <code>div</code> element:</p>
+        <pre><code>const div = document.querySelector('.my-div');
+div.remove();</code></pre>
+
+    </div>
+
+    
+</body>
+</html>
