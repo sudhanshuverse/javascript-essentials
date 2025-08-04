@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse, Scroll, Touch, and Drag Events</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <h1>JavaScript Mouse, Scroll, Touch, and Drag Events</h1>
+    <p>This tutorial explains the core DOM events used to handle user interactions. You’ll find syntax examples,
+        explanations, and an interactive demo.</p>
+
+
+    <!-- Mouse Events -->
+    <div class="event-section">
+        <h2>1. Mouse Events</h2>
+        <p>Mouse events are triggered by user interactions using a mouse. You can detect clicks, hovering, scrolling,
+            and button states.</p>
+
+        <h3>Common Mouse Events:</h3>
+        <ul>
+            <li><strong>click:</strong> Fired when the element is clicked.</li>
+            <li><strong>mousedown:</strong> Fired when a mouse button is pressed down.</li>
+            <li><strong>mouseup:</strong> Fired when the mouse button is released.</li>
+            <li><strong>mouseenter:</strong> Triggered when the mouse enters the element (no bubbling).</li>
+            <li><strong>mouseleave:</strong> Triggered when the mouse leaves the element.</li>
+            <li><strong>mouseover:</strong> Similar to mouseenter but bubbles and includes child elements.</li>
+            <li><strong>mousemove:</strong> Fired whenever the pointer moves within the element.</li>
+            <li><strong>wheel:</strong> Triggered when scrolling using mouse wheel.</li>
+        </ul>
+
+        <h3>Example - Adding New Cards on Click:</h3>
+        <pre><code>
+card.addEventListener('click', () => {
+    const newCard = document.createElement('div');
+    newCard.classList.add('card');
+    newCard.innerText = count++;
+    container.appendChild(newCard);
+});
+        </code></pre>
+    </div>
+
+    <!-- Scroll Events -->
+    <div class="event-section">
+        <h2>2. Scroll Events</h2>
+        <p>The <code>scroll</code> event occurs when an element is scrolled. Use it carefully as it can trigger multiple
+            times rapidly.</p>
+
+        <h3>Key Notes:</h3>
+        <ul>
+            <li>Usually used on <code>window</code> or scrollable elements.</li>
+            <li>Can be optimized using throttling or debouncing for performance.</li>
+        </ul>
+
+        <h3>Example:</h3>
+        <pre><code>
+window.addEventListener('scroll', (e) => {
+    console.log("Page is scrolling", e);
+});
+        </code></pre>
+    </div>
+
+    <!-- Touch Events -->
+    <div class="event-section">
+        <h2>3. Touch Events (Mobile)</h2>
+        <p>Touch events work on mobile or touch-enabled devices. They allow developers to handle finger gestures.</p>
+
+        <h3>Touch Event Types:</h3>
+        <ul>
+            <li><strong>touchstart:</strong> Triggered when finger touches the screen.</li>
+            <li><strong>touchmove:</strong> Triggered when finger moves across the screen.</li>
+            <li><strong>touchend:</strong> Triggered when finger is lifted from the screen.</li>
+        </ul>
+
+        <h3>Example:</h3>
+        <pre><code>
+card.addEventListener('touchstart', (e) => {
+    console.log("Touch started", e);
+});
+        </code></pre>
+    </div>
+
+    <!-- Drag Events -->
+    <div class="event-section">
+        <h2>4. Drag Events</h2>
+        <p>Drag events are used for drag-and-drop features. They involve moving an element and optionally dropping it
+            elsewhere.</p>
+
+        <h3>Key Drag Events:</h3>
+        <ul>
+            <li><strong>dragstart:</strong> Fires when drag begins.</li>
+            <li><strong>drag:</strong> Fires while dragging.</li>
+            <li><strong>dragend:</strong> Fires when drag is released.</li>
+        </ul>
+
+        <h3>Example:</h3>
+        <pre><code>
+card.addEventListener('dragstart', (e) => {
+    console.log("Drag started", e);
+});
+card.addEventListener('drag', (e) => {
+    console.log("Dragging...", e);
+});
+card.addEventListener('dragend', (e) => {
+    console.log("Drag ended", e);
+});
+        </code></pre>
+    </div>
+
+    
+</body>
+</html>
