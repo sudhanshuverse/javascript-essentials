@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Bubbling, Capturing & Once</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <h1>Event Bubbling, Capturing & Once Option in JavaScript</h1>
+
+    <section>
+        <h2>Event Propagation</h2>
+        <p>
+            JavaScript events propagate through the DOM in two phases:
+            <strong>capturing</strong> (top-down) and <strong>bubbling</strong> (bottom-up).
+            Additionally, the <code>once</code> option lets you register a listener that runs just one time.
+        </p>
+    </section>
+
+    <section>
+        <h2>Event Bubbling</h2>
+        <p>
+            Bubbling is the default phase. The event starts at the target element and bubbles up to ancestors.
+            You can stop propagation using <code>event.stopPropagation()</code>.
+        </p>
+        <pre><code>element.addEventListener('click', handler, { capture: false });</code></pre>
+        <p>Try clicking the boxes below to see bubbling in action.</p>
+
+        <div class="demo-area">
+            <div class="green" id="green">Green
+                <div class="pink" id="pink">Pink
+                    <div class="blue" id="blue">Blue</div>
+                </div>
+            </div>
+        </div>
+        <div class="console" id="console">Console Output:</div>
+    </section>
+
+    <section>
+        <h2>Event Capturing</h2>
+        <p>
+            In capturing (or trickling), the event starts at the outermost element and goes inward toward the target.
+            Enable this by setting <code>capture: true</code>.
+        </p>
+        <pre><code>element.addEventListener('click', handler, { capture: true });</code></pre>
+        <button id="toggleMode">Switch to Capturing Mode</button>
+    </section>
+
+    <section>
+        <h2>The <code>once</code> Option</h2>
+        <p>
+            The <code>once</code> option runs the event listener only once. After the first trigger, it's automatically
+            removed.
+        </p>
+        <pre><code>element.addEventListener('click', handler, { once: true });</code></pre>
+        <button id="addOnce">Add Once Listener to Blue</button>
+    </section>
+
+    <section>
+        <h2>Comparison Table</h2>
+        <table>
+            <tr>
+                <th>Aspect</th>
+                <th>Bubbling</th>
+                <th>Capturing</th>
+                <th>Once</th>
+            </tr>
+            <tr>
+                <td>Direction</td>
+                <td>Target → Parent → Ancestors</td>
+                <td>Root → Parent → Target</td>
+                <td>Runs only once</td>
+            </tr>
+            <tr>
+                <td>Default?</td>
+                <td>Yes</td>
+                <td>No (use <code>capture: true</code>)</td>
+                <td>Optional (<code>once: true</code>)</td>
+            </tr>
+            <tr>
+                <td>Use Case</td>
+                <td>Normal event handling</td>
+                <td>Intercept before children</td>
+                <td>One-time setup like intro animation</td>
+            </tr>
+            <tr>
+                <td>Stop Propagation</td>
+                <td><code>event.stopPropagation()</code></td>
+                <td><code>event.stopPropagation()</code></td>
+                <td>Stops after 1 run</td>
+            </tr>
+        </table>
+    </section>
+
+
+</body>
+</html>
