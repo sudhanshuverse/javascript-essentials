@@ -1,13 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Event Listeners</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
 </head>
+
 <body>
-    
+    <h1>JavaScript Event Listeners</h1>
+
+    <section class="description">
+        <h2>What is an Event Listener?</h2>
+        <p>
+            An <strong>Event Listener</strong> is a JavaScript method that waits for a specific user interaction or
+            browser action (like a click, keypress, mouse hover, etc.) to happen on an HTML element and then triggers a
+            function in response.
+        </p>
+    </section>
+
+    <section class="types">
+        <h2>Types of Event Binding</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Multiple Handlers?</th>
+                    <th>Recommended?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Inline HTML Event</td>
+                    <td>Uses HTML attribute like <code>onclick</code></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>DOM Property</td>
+                    <td>Uses JS like <code>element.onclick</code></td>
+                    <td>(last one overwrites)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code>addEventListener()</code></td>
+                    <td>Standard JS method to add multiple event listeners</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="syntax">
+        <h2>Syntax</h2>
+        <pre><code>element.addEventListener("event", function, useCapture);</code></pre>
+        <ul>
+            <li><strong>event:</strong> A string like <code>"click"</code>, <code>"keydown"</code>, etc.</li>
+            <li><strong>function:</strong> The function to execute when the event occurs.</li>
+            <li><strong>useCapture:</strong> Optional boolean (default: false, use event bubbling).</li>
+        </ul>
+    </section>
+
+    <section class="examples">
+        <h2>Examples</h2>
+
+        <h3>Example 1: DOM Property Method (Only One Handler)</h3>
+        <button id="btn1">Click Me (Method 1)</button>
+
+        <h3>Example 2: addEventListener (Multiple Handlers)</h3>
+        <button id="btn2">Click Me (Method 2)</button>
+
+        <h3>Example 3: Dynamic Element Creation (Event Delegation)</h3>
+        <div class="container">
+            <div class="card add-card">+</div>
+        </div>
+    </section>
+
+    <section class="conclusion">
+        <h2>Best Practices</h2>
+        <ul>
+            <li>Always use <code>addEventListener()</code> — it supports multiple listeners and works with dynamic
+                elements.</li>
+            <li>Avoid inline HTML event attributes.</li>
+            <li>Use event delegation when dealing with dynamic elements.</li>
+        </ul>
+    </section>
+
 </body>
+
 </html>
