@@ -1,0 +1,104 @@
+/* Basic Page Setup */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    max-width: 960px;
+    margin: auto;
+    padding: 20px;
+    background: #f4f4f4;
+    color: #222;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+    color: #1a1a1a;
+    margin-top: 30px;
+}
+
+/* Section layout */
+section {
+    margin-bottom: 40px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+
+/* Code Block Styling */
+pre {
+    background: #efefef;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+code {
+    background-color: #e1e1e1;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ccc;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #ddd;
+}
+
+/* Button Styling (Example buttons) */
+button {
+    padding: 10px 15px;
+    margin: 10px 0;
+    background: #007acc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #005f99;
+}
+
+/* Card Container for Dynamic Elements */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Individual Card Style */
+.card {
+    width: 60px;
+    height: 60px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Add Button Card */
+.add-card {
+    background-color: #28a745;
+    color: white;
+}
