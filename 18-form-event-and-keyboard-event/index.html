@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events Guide</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <h1>JavaScript Events Guide</h1>
+
+    <div class="card">
+        <h2>1. Click Events</h2>
+        <h3>Definition</h3>
+        <p>Click events occur when a user clicks an element using a pointing device (e.g., mouse or touch).</p>
+        <h3>Important Points</h3>
+        <ul>
+            <li>Triggered on a single click or double click.</li>
+            <li>Commonly used for buttons, links, and interactive elements.</li>
+            <li>Provides event object with details like target element and coordinates.</li>
+        </ul>
+        <h3>Types</h3>
+        <ul>
+            <li><code>click</code>: Single click event.</li>
+            <li><code>dblclick</code>: Double click event.</li>
+        </ul>
+        <h3>Syntax</h3>
+        <pre><code>
+element.addEventListener('click', (event) => {
+    // Handle click event
+});
+element.addEventListener('dblclick', (event) => {
+    // Handle double click event
+});
+    </code></pre>
+        <h3>Example</h3>
+        <pre><code>
+const button = document.querySelector('button');
+button.addEventListener('click', (e) => {
+    console.log('Button clicked!');
+    console.log('Target:', e.target);
+});
+button.addEventListener('dblclick', (e) => {
+    console.log('Button double-clicked!');
+});
+    </code></pre>
+    </div>
+
+    <div class="card">
+        <h2>2. Input Events</h2>
+        <h3>Definition</h3>
+        <p>Input events are triggered when the value of an input, select, or textarea element changes.</p>
+        <h3>Important Points</h3>
+        <ul>
+            <li>Fires continuously as the user types or modifies input.</li>
+            <li>Useful for real-time validation or dynamic updates.</li>
+            <li>Provides the current value through <code>event.target.value</code>.</li>
+        </ul>
+        <h3>Types</h3>
+        <ul>
+            <li><code>input</code>: Fires on any value change.</li>
+            <li><code>change</code>: Fires when value is committed (e.g., on blur).</li>
+        </ul>
+        <h3>Syntax</h3>
+        <pre><code>
+element.addEventListener('input', (event) => {
+    // Handle input change
+});
+element.addEventListener('change', (event) => {
+    // Handle value commitment
+});
+    </code></pre>
+        <h3>Example</h3>
+        <pre><code>
+const input = document.querySelector('#username');
+const output = document.querySelector('p');
+input.addEventListener('input', (e) => {
+    output.textContent = e.target.value;
+});
+input.addEventListener('change', (e) => {
+    console.log('Value committed:', e.target.value);
+});
+    </code></pre>
+        <h3>Difference: input vs change</h3>
+        <ul>
+            <li><code>input</code>: Fires immediately on every change (e.g., each keystroke).</li>
+            <li><code>change</code>: Fires only when the input is committed, typically on blur or Enter key.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>3. Focus Events</h2>
+        <h3>Definition</h3>
+        <p>Focus events occur when an element gains or loses focus.</p>
+        <h3>Important Points</h3>
+        <ul>
+            <li>Useful for form validation or accessibility enhancements.</li>
+            <li>Triggered by user actions like clicking or tabbing.</li>
+            <li>Does not bubble up the DOM tree.</li>
+        </ul>
+        <h3>Types</h3>
+        <ul>
+            <li><code>focus</code>: When an element gains focus.</li>
+            <li><code>blur</code>: When an element loses focus.</li>
+        </ul>
+        <h3>Syntax</h3>
+        <pre><code>
+element.addEventListener('focus', (event) => {
+    // Handle focus
+});
+element.addEventListener('blur', (event) => {
+    // Handle blur
+});
+    </code></pre>
+        <h3>Example</h3>
+        <pre><code>
+const input = document.querySelector('#username');
+input.addEventListener('focus', (e) => {
+    console.log('Input focused');
+    e.target.style.backgroundColor = 'lightyellow';
+});
+input.addEventListener('blur', (e) => {
+    console.log('Input blurred');
+    e.target.style.backgroundColor = '';
+});
+    </code></pre>
+        <h3>Difference: focus vs blur</h3>
+        <ul>
+            <li><code>focus</code>: Triggered when an element becomes active (e.g., clicked or tabbed into).</li>
+            <li><code>blur</code>: Triggered when an element loses focus (e.g., clicking elsewhere).</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>4. Form Events</h2>
+        <h3>Definition</h3>
+        <p>Form events are triggered by actions within a form, such as submission.</p>
+        <h3>Important Points</h3>
+        <ul>
+            <li>Commonly used to handle form submissions or validate data.</li>
+            <li>Use <code>FormData</code> to easily access form data.</li>
+            <li>Prevent default submission with <code>event.preventDefault()</code>.</li>
+        </ul>
+        <h3>Types</h3>
+        <ul>
+            <li><code>submit</code>: Fires when a form is submitted.</li>
+        </ul>
+        <h3>Syntax</h3>
+        <pre><code>
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    // Handle form submission
+});
+    </code></pre>
+        <h3>Example</h3>
+        <pre><code>
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    for (const [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+    }
+});
+    </code></pre>
+    </div>
+
+    <div class="card">
+        <h2>5. Keyboard Events</h2>
+        <h3>Definition</h3>
+        <p>Keyboard events occur when a user interacts with the keyboard.</p>
+        <h3>Important Points</h3>
+        <ul>
+            <li>Provides <code>event.key</code> (key value) and <code>event.code</code> (physical key).</li>
+            <li>Useful for shortcuts, games, or accessibility features.</li>
+            <li>Can be attached to specific elements or the entire window.</li>
+        </ul>
+        <h3>Types</h3>
+        <ul>
+            <li><code>keydown</code>: When a key is pressed.</li>
+            <li><code>keyup</code>: When a key is released.</li>
+            <li><code>keypress</code>: When a key produces a character (deprecated).</li>
+        </ul>
+        <h3>Syntax</h3>
+        <pre><code>
+window.addEventListener('keydown', (event) => {
+    // Handle key press
+});
+window.addEventListener('keyup', (event) => {
+    // Handle key release
+});
+    </code></pre>
+        <h3>Example</h3>
+        <pre><code>
+window.addEventListener('keydown', (e) => {
+    console.log('Key:', e.key, 'Code:', e.code);
+    if (e.key === 'Enter') {
+        console.log('Enter key pressed!');
+    }
+});
+window.addEventListener('keyup', (e) => {
+    console.log('Key released:', e.key);
+});
+    </code></pre>
+        <h3>Difference: keydown vs keyup vs keypress</h3>
+        <ul>
+            <li><code>keydown</code>: Fires when a key is pressed, including non-character keys.</li>
+            <li><code>keyup</code>: Fires when a key is released, useful for detecting key release.</li>
+            <li><code>keypress</code>: Fires only for character keys, but is deprecated.</li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>
