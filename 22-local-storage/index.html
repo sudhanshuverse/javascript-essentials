@@ -1,13 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script></script>
+    <title>Understanding Local Storage</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
+
 <body>
+    <h1>Understanding Local Storage</h1>
+
+    <h2>What is Local Storage?</h2>
+    <p>
+        Local Storage is a browser-based storage system that allows websites to save key-value data on a user's device for
+        persistent access.
+    </p>
+    
+    <ul>
+        <li>Part of the Web Storage API introduced in HTML5.</li>
+        <li>Stores data as key-value pairs in the browser.</li>
+        <li>Data is stored persistently (even after the browser is closed).</li>
+        <li>Provides more storage capacity than cookies (typically 5–10 MB).</li>
+        <li>Data is not sent to the server with each HTTP request.</li>
+        <li>Ideal for storing user preferences, settings, or cached data.</li>
+    </ul>
+
+
+    <h2>Types of Web Storage</h2>
+    <p>There are two main types of web storage in modern browsers:</p>
+    <ul>
+        <li><strong>Local Storage</strong>: Stores data with no expiration date. The data persists until explicitly
+            cleared by the application or user (e.g., clearing browser data).</li>
+        <li><strong>Session Storage</strong>: Stores data only for the duration of a browser session. The data is
+            cleared when the browser tab is closed.</li>
+    </ul>
+
+    <h2>Local Storage API Methods</h2>
+    <p>The Local Storage API provides the following methods:</p>
+    <ul>
+        <li><code>setItem(key, value)</code>: Stores a key-value pair in Local Storage.</li>
+        <li><code>getItem(key)</code>: Retrieves the value associated with the specified key.</li>
+        <li><code>removeItem(key)</code>: Removes a specific key-value pair.</li>
+        <li><code>clear()</code>: Removes all key-value pairs from Local Storage.</li>
+        <li><code>key(index)</code>: Returns the key at the specified index.</li>
+        <li><code>length</code>: Returns the number of key-value pairs stored.</li>
+    </ul>
+    <p><strong>Note</strong>: Local Storage only stores strings. To store complex data like objects or arrays, you must
+        serialize them using <code>JSON.stringify()</code> and deserialize using <code>JSON.parse()</code>.</p>
+
+    <h2>Examples of Using Local Storage</h2>
+    <p>Below are different methods to use Local Storage, as demonstrated in your provided code, along with explanations.
+    </p>
+
+    <h3>Method 1: Basic Assignment (Not Recommended)</h3>
+    <p>This method directly assigns a value to <code>localStorage</code> using a property name. It’s simple but not the
+        standard approach.</p>
+    <pre>
+const nameElement = document.querySelector('.name-tag');
+nameElement.innerText = localStorage.MyName;
+console.log(nameElement);
+    </pre>
+    <p><strong>Explanation</strong>: This retrieves <code>MyName</code> from Local Storage and sets it as the text of an
+        element. However, it lacks event handling and doesn’t update Local Storage dynamically.</p>
+
+    <h3>Method 2: Using setItem and Event Listener</h3>
+    <p>This method uses <code>setItem</code> to store data and updates the UI in real-time as the user types.</p>
+    <pre>
+const nameElement = document.querySelector('.name-tag');
+const nameInput = document.querySelector('.name');
+
+nameInput.addEventListener('input', (e) => {
+    localStorage.setItem('MyName', e.target.value);
+    nameElement.innerText = localStorage.getItem('MyName');
+});
+    </pre>
+    <p><strong>Explanation</strong>: The <code>input</code> event listener captures user input, stores it in Local
+        Storage using <code>setItem</code>, and updates the UI with <code>getItem</code>. This is better but still uses
+        a single key, limiting scalability.</p>
+
+    <h3>Method 3: Multiple Inputs with setItem and getItem</h3>
+    <p>This extends Method 2 to handle multiple inputs (name and age).</p>
+    <pre>
+const nameElement = document.querySelector('.name-tag');
+const ageElement = document.querySelector('.age-tag');
+const nameInput = document.querySelector('.name');
+const ageInput = document.querySelector('.age');
+
+nameInput.addEventListener('input', (e) => {
+    localStorage.setItem('myName', e.target.value);
+    nameElement.innerText = localStorage.getItem('myName');
+});
+
+ageInput.addEventListener('input', (e) => {
+    localStorage.setItem('myAge', e.target.value);
+    ageElement.innerText = localStorage.getItem('myAge');
+});
+    </pre>
+    <p><strong>Explanation</strong>: This handles two inputs independently, storing and retrieving <code>myName</code>
+        and <code>myAge</code>. It’s more practical but still uses separate keys, which can become cumbersome for
+        complex data.</p>
+
+    <h3>Method 4: Storing Data as an Object (Recommended)</h3>
+    <p>This method stores data as a JSON object, making it scalable for multiple properties.</p>
+    <pre>
+const nameElement = document.querySelector('.name-tag');
+const ageElement = document.querySelector('.age-tag');
+const nameInput = document.querySelector('.name');
+const ageInput = document.querySelector('.age');
+
+const userData = JSON.parse(localStorage.getItem('userData')) || {};
+
+nameInput.addEventListener('input', (e) => {
+    userData.name = e.target.value;
+    localStorage.setItem('userData', JSON.stringify(userData));
+    nameElement.innerText = e.target.value;
+});
+
+ageInput.addEventListener('input', (e) => {
+    userData.age = e.target.value;
+    localStorage.setItem('userData', JSON.stringify(userData));
+    ageElement.innerText = e.target.value;
+});
+
+if (userData.name) {
+    nameElement.innerText = userData.name;
+}
+
+if (userData.age) {
+    ageElement.innerText = userData.age;
+}
+    </pre>
+    <p><strong>Explanation</strong>: This retrieves a <code>userData</code> object from Local Storage (or creates an
+        empty one if none exists). It updates the object’s properties, serializes it to JSON, and stores it under a
+        single key. On page load, it checks for existing data to populate the UI. This is the most robust and scalable
+        approach.</p>
+
+    <h2>Interactive Demo</h2>
+    <p>Try entering your name and age below. The data will be stored in Local Storage and persist across page refreshes.
+    </p>
+    <div class="input-group">
+        <label for="name-input">Name:</label>
+        <input type="text" id="name-input" class="name" placeholder="Enter your name">
+        <label for="age-input">Age:</label>
+        <input type="text" id="age-input" class="age" placeholder="Enter your age">
+    </div>
+    <h2>My name is <span class="name-tag">unknown</span></h2>
+    <h2>I am <span class="age-tag">0</span> years old.</h2>
+    <button onclick="clearStorage()">Clear Local Storage</button>
+
+    <h2>Advantages and Limitations</h2>
+    <p><strong>Advantages</strong>:</p>
+    <ul>
+        <li>Simple API for storing and retrieving data.</li>
+        <li>Persistent storage across browser sessions.</li>
+        <li>Larger capacity than cookies (5-10 MB).</li>
+        <li>No server communication, reducing network overhead.</li>
+    </ul>
+    <p><strong>Limitations</strong>:</p>
+    <ul>
+        <li>Only stores strings, requiring JSON serialization for complex data.</li>
+        <li>Not secure for sensitive data (accessible via JavaScript).</li>
+        <li>Browser-specific; data is not shared across different browsers.</li>
+        <li>Limited to same-origin policy (data is scoped to the domain).</li>
+    </ul>
+
+    <h2>Local Storage vs Session Storage vs Cookies</h2>
+    <table border="1" cellpadding="6" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Local Storage</th>
+                <th>Session Storage</th>
+                <th>Cookies</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Storage Limit</td>
+                <td>5–10 MB</td>
+                <td>5–10 MB</td>
+                <td>4 KB</td>
+            </tr>
+            <tr>
+                <td>Lifetime</td>
+                <td>Until cleared manually</td>
+                <td>Until tab is closed</td>
+                <td>Set by expiry or session</td>
+            </tr>
+            <tr>
+                <td>Scope</td>
+                <td>All tabs (same origin)</td>
+                <td>Current tab only</td>
+                <td>Client & server</td>
+            </tr>
+            <tr>
+                <td>Sent with HTTP?</td>
+                <td>No</td>
+                <td>No</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Use Case</td>
+                <td>Preferences, theme</td>
+                <td>Form data, tab state</td>
+                <td>Login, tracking</td>
+            </tr>
+            <tr>
+                <td>Access via</td>
+                <td><code>localStorage</code></td>
+                <td><code>sessionStorage</code></td>
+                <td><code>document.cookie</code></td>
+            </tr>
+        </tbody>
+    </table>
+
     
 </body>
+
 </html>
