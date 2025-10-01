@@ -45,6 +45,7 @@ This repository is designed to help learners build a **solid foundation in JavaS
 | 20 | Event Bubbling & Capturing | [View](https://sudhanshuverse.github.io/javascript-essentials/20-event-bubbling-and-capturing/) |
 | 21 | Event Simulation | [View](https://sudhanshuverse.github.io/javascript-essentials/21-event-samulation/) |
 | 22 | Local Storage | [View](https://sudhanshuverse.github.io/javascript-essentials/22-local-storage/) |
+| 23 | API | [View](https://sudhanshuverse.github.io/javascript-essentials/23-api/) |
 
 ---
 
