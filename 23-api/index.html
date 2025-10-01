@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding APIs in JavaScript: A Deep Dive</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>What is an API?</h1>
+    </header>
+
+    <section class="section">
+        <h2>Why APIs Matter</h2>
+        <p>APIs (Application Programming Interfaces) are the bridges that allow your JavaScript code to interact with external services, databases, or other applications. In web development, they enable dynamic content loading without full page reloads—think fetching user data, posting forms, or displaying real-time updates.</p>
+        
+        <h3>Definition</h3>
+        <p>An API is a set of rules and protocols that allows different software components to communicate. In JavaScript, we often deal with <strong>RESTful APIs</strong> (Representational State Transfer), which use standard HTTP methods to perform CRUD operations (Create, Read, Update, Delete) on resources.</p>
+
+        <h3>Syntax and Structure</h3>
+        <p>APIs typically expose endpoints (URLs) like <code>https://api.example.com/users</code>. You send HTTP requests to these endpoints and receive responses, usually in JSON format.</p>
+        
+        <div class="example">
+            <h4>Basic Syntax (Using Fetch API)</h4>
+            <pre><code>fetch('https://api.example.com/endpoint')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));</code></pre>
+        </div>
+
+        <h3>Types of APIs</h3>
+        <ul>
+            <li><strong>REST APIs</strong>: Stateless, use HTTP methods (GET, POST, PUT, DELETE). Most common for web apps.</li>
+            <li><strong>GraphQL APIs</strong>: Query language for APIs; allows clients to request exactly what they need.</li>
+            <li><strong>SOAP APIs</strong>: XML-based, more rigid and enterprise-focused.</li>
+            <li><strong>WebSocket APIs</strong>: For real-time, bidirectional communication (e.g., chat apps).</li>
+        </ul>
+
+        <h3>Example: Fetching Data from a Public API</h3>
+        <p>Below is an interactive example using the Dog CEO API to fetch random dog images. This demonstrates asynchronous JavaScript with Promises and Fetch.</p>
+        <div class="imageContainer">
+            <img id="dogImage" src="https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg" alt="Random Dog Image">
+        </div>
+        <br><br>
+        <button id="newDogBtn">Get New Image</button>
+    </section>
+
+    <section class="section">
+        <h2>JSON: The Language of APIs</h2>
+        <p>JSON (JavaScript Object Notation) is a lightweight data-interchange format that's easy for humans to read and machines to parse. It's the de facto standard for API responses in JavaScript.</p>
+
+        <h3>Syntax</h3>
+        <p>JSON uses key-value pairs, similar to JavaScript objects, but with stricter rules: double quotes for strings, no trailing commas, no functions.</p>
+        
+        <div class="example">
+            <h4>Valid JSON Syntax</h4>
+            <pre><code>{
+  "name": "John Doe",
+  "age": 30,
+  "hobbies": ["reading", "coding"],
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown"
+  }
+}</code></pre>
+        </div>
+
+        <h3>Example</h3>
+        <p>Suppose an API returns user data:</p>
+        <pre><code>{
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+}</code></pre>
+        <p>In JavaScript, you can parse it with <code>response.json()</code> and access like <code>data.title</code>.</p>
+
+        <h3>JSON.stringify() and JSON.parse()</h3>
+        <p><code>JSON.stringify(obj)</code> converts a JavaScript object to a JSON string (for sending data via POST). <code>JSON.parse(str)</code> does the reverse.</p>
+        
+        <div class="example">
+            <h4>Using stringify()</h4>
+            <pre><code>const user = { name: 'Alice', age: 25 };
+const jsonString = JSON.stringify(user);
+console.log(jsonString); // '{"name":"Alice","age":25}'
+
+const parsed = JSON.parse(jsonString);
+console.log(parsed.name); // 'Alice'</code></pre>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>HTTP Methods: GET, POST, DELETE</h2>
+        <p>APIs use HTTP methods to define actions. These are the building blocks of CRUD operations.</p>
+
+        <h3>GET: Retrieve Data</h3>
+        <p>Used to fetch resources. Idempotent (safe to repeat). No body in request.</p>
+        <div class="example">
+            <pre><code>fetch('https://jsonplaceholder.typicode.com/posts/1')
+  .then(response => response.json())
+  .then(data => console.log(data));</code></pre>
+        </div>
+
+        <h3>POST: Create Data</h3>
+        <p>Sends data to create a new resource. Includes a request body (usually JSON).</p>
+        <div class="example">
+            <pre><code>fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ title: 'New Post', body: 'Content', userId: 1 })
+})
+.then(response => response.json())
+.then(data => console.log(data));</code></pre>
+        </div>
+
+        <h3>DELETE: Remove Data</h3>
+        <p>Deletes a resource. Idempotent.</p>
+        <div class="example">
+            <pre><code>fetch('https://jsonplaceholder.typicode.com/posts/1', { method: 'DELETE' })
+  .then(response => console.log('Deleted:', response.ok));</code></pre>
+        </div>
+
+        <p><strong>Pro Tip:</strong> Always handle errors with <code>.catch()</code> or try-catch in async/await. Check response status with <code>response.ok</code>.</p>
+    </section>
+
+
+</body>
+</html>
