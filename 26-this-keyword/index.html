@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript "this" Keyword</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>JavaScript "this" Keyword</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Definition</h2>
+            <p>The <code>this</code> keyword in JavaScript <strong>refers to the object that is executing the current function</strong>. Its value is <strong>determined by how a function is called</strong>.</p>
+        </section>
+
+        <section>
+            <h2>Key Points</h2>
+            <ul>
+                <li>Context-sensitive: depends on execution context.</li>
+                <li>Global context: refers to global object (window in browser).</li>
+                <li>Function context: refers to global object (non-strict) or undefined (strict).</li>
+                <li>Object context: refers to the object calling the method.</li>
+                <li>Constructor functions: refers to the newly created object.</li>
+                <li>Arrow functions: inherit <code>this</code> from surrounding scope.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Why <code>this</code> is Needed</h2>
+            <p>It allows functions and methods to operate on the object they belong to, making code reusable and dynamic.</p>
+        </section>
+
+        <section>
+            <h2>Syntax</h2>
+            <pre><code>
+// Inside a method
+object.method() {
+    console.log(this);
+}
+
+// Inside a constructor
+function Person(name) {
+    this.name = name;
+}
+
+// Arrow function (lexical this)
+let arrowFunc = () =&gt; console.log(this);
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Examples</h2>
+
+            <div class="example">
+                <h3>1. Global Context</h3>
+                <pre><code>console.log(this); // Window object in browser</code></pre>
+            </div>
+
+            <div class="example">
+                <h3>2. Function Context</h3>
+                <pre><code>function showThis() {
+    console.log(this);
+}
+showThis(); // Window (non-strict) or undefined (strict)</code></pre>
+            </div>
+
+            <div class="example">
+                <h3>3. Object Method</h3>
+                <pre><code>const person = {
+    name: "Sudhanshu",
+    greet: function() {
+        console.log("Hello, " + this.name);
+    }
+};
+person.greet(); // Hello, Sudhanshu</code></pre>
+            </div>
+
+            <div class="example">
+                <h3>4. Constructor Function</h3>
+                <pre><code>function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+const p1 = new Person("Sudhanshu", 21);
+console.log(p1.name); // Sudhanshu</code></pre>
+            </div>
+
+            <div class="example">
+                <h3>5. Arrow Function</h3>
+                <pre><code>const obj = {
+    name: "Sudhanshu",
+    greet: function() {
+        const arrowFunc = () =&gt; console.log(this.name);
+        arrowFunc();
+    }
+};
+obj.greet(); // Sudhanshu</code></pre>
+            </div>
+
+            <div class="example">
+                <h3>6. call, apply, bind</h3>
+                <pre><code>function sayHello(city) {
+    console.log(`Hello, I am ${this.name} from ${city}`);
+}
+const person = { name: "Sudhanshu" };
+
+sayHello.call(person, "Delhi");  // Hello, I am Sudhanshu from Delhi
+sayHello.apply(person, ["Mumbai"]); // Hello, I am Sudhanshu from Mumbai
+const boundFunc = sayHello.bind(person, "Kolkata");
+boundFunc(); // Hello, I am Sudhanshu from Kolkata</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>Where <code>this</code> is Used</h2>
+            <ul>
+                <li>Object-oriented programming</li>
+                <li>Constructor functions and classes</li>
+                <li>Event handling</li>
+                <li>Callback functions</li>
+                <li>Libraries and frameworks (React, jQuery)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Summary</h2>
+            <ul>
+                <li><code>this</code> is dynamic; depends on function call.</li>
+                <li>Global scope → global object</li>
+                <li>Object method → the object itself</li>
+                <li>Constructor → new instance</li>
+                <li>Arrow function → inherits <code>this</code></li>
+                <li>Can be explicitly set with <code>call</code>, <code>apply</code>, or <code>bind</code></li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
