@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript OOP Concepts</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>JavaScript Programming Paradigms</h1>
+
+        <!-- Procedural Programming -->
+        <section>
+            <h2>1️⃣ What is Procedural Programming?</h2>
+            <p><strong>Definition:</strong> Procedural Programming is a programming paradigm based on the concept of procedures (functions) that operate on data. Code is organized into a sequence of steps or instructions.</p>
+            
+            <p><strong>Key Points:</strong></p>
+            <ul>
+                <li><strong>Step-by-Step Execution:</strong> Programs are written as a list of instructions executed in order, like a recipe.</li>
+                <li><strong>Global Data Access:</strong> Data is often stored in global variables, making it accessible but prone to unintended modifications.</li>
+                <li><strong>Reusability via Functions:</strong> Functions encapsulate reusable logic, but data and behavior are separate.</li>
+                <li><strong>Advantages:</strong> Simple and straightforward for small scripts; easy to follow the flow.</li>
+                <li><strong>Disadvantages:</strong> Hard to scale for large applications; lacks modularity.</li>
+            </ul>
+
+            <p><strong>Syntax Example:</strong></p>
+            <pre><code>
+// Procedural Programming Example
+function calculateArea(length, width) {
+    return length * width;
+}
+
+let area = calculateArea(5, 10);
+console.log("Area:", area); // Output: Area: 50
+            </code></pre>
+
+            <p><strong>Explanation:</strong> All logic is inside one function; we pass data and get the result. No objects or data hiding. This approach works well for simple calculations but becomes messy as complexity grows, as there's no way to group related data and functions together.</p>
+        </section>
+
+        <!-- Functional Programming -->
+        <section>
+            <h2>2️⃣ What is Functional Programming?</h2>
+            <p><strong>Definition:</strong> Functional Programming treats functions as first-class citizens. Functions are pure, avoid changing state, and return new data instead of modifying existing data.</p>
+            
+            <p><strong>Key Points:</strong></p>
+            <ul>
+                <li><strong>Pure Functions:</strong> Functions that always produce the same output for the same input and have no side effects.</li>
+                <li><strong>Immutability:</strong> Data cannot be changed once created; instead, new data is produced.</li>
+                <li><strong>Higher-Order Functions:</strong> Functions that can take other functions as arguments or return them (e.g., map, filter).</li>
+                <li><strong>Advantages:</strong> Predictable, easier to test, and parallelizable.</li>
+                <li><strong>Disadvantages:</strong> Can be less intuitive for stateful operations like UI updates.</li>
+            </ul>
+
+            <p><strong>Syntax Example:</strong></p>
+            <pre><code>
+// Functional Programming Example
+const add = (a, b) => a + b;
+
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(num => num * 2); // Creates new array without mutating original
+
+console.log("Doubled:", doubled); // Output: Doubled: [2, 4, 6, 8, 10]
+            </code></pre>
+
+            <p><strong>Explanation:</strong> Functions are independent and don’t depend on external data — ensuring reusability and predictability. In JS, methods like <code>map</code>, <code>filter</code>, and <code>reduce</code> embody this paradigm, making array manipulations declarative and concise.</p>
+        </section>
+
+        <!-- Object Oriented Programming -->
+        <section>
+            <h2>3️⃣ Object-Oriented Programming (OOP)</h2>
+            <p><strong>Definition:</strong> OOP organizes code into <em>objects</em> that combine <strong>data</strong> (properties) and <strong>behavior</strong> (methods). It makes code modular, reusable, and easier to manage. JavaScript's OOP is prototypal, where objects inherit directly from other objects, but ES6 classes simplify this with familiar syntax.</p>
+            
+            <p><strong>Key Points:</strong></p>
+            <ul>
+                <li><strong>Objects as Building Blocks:</strong> Real-world entities modeled as objects with state (properties) and actions (methods).</li>
+                <li><strong>Modularity:</strong> Code is divided into self-contained units, reducing complexity.</li>
+                <li><strong>Reusability:</strong> Through inheritance and prototypes, code can be shared across objects.</li>
+                <li><strong>Advantages:</strong> Better for large-scale apps; promotes DRY (Don't Repeat Yourself) principle.</li>
+                <li><strong>Disadvantages:</strong> Can lead to over-engineering if misused; steeper learning curve.</li>
+            </ul>
+
+            <p><strong>Syntax Example:</strong></p>
+            <pre><code>
+// Object-Oriented Programming Example
+class Student {
+    constructor(name, course) {
+        this.name = name;
+        this.course = course;
+    }
+
+    study() {
+        console.log(`${this.name} is studying ${this.course}`);
+    }
+}
+
+const s1 = new Student("Sudhanshu", "BCA");
+s1.study(); // Output: Sudhanshu is studying BCA
+            </code></pre>
+
+            <p><strong>Explanation:</strong> We create a <code>Student</code> class and make objects from it using <code>new</code>. This encapsulates data (<code>name</code>, <code>course</code>) and behavior (<code>study()</code>) into a single unit, promoting better organization than procedural or functional styles alone. Under the hood, JS uses prototypes for sharing methods efficiently.</p>
+        </section>
+
+        <!-- OOP Pillars -->
+        <section>
+            <h2>4️⃣ Pillars of OOP</h2>
+            <p>The four core pillars of OOP provide the foundation for designing robust, maintainable software. Each pillar addresses specific challenges in code organization and extensibility.</p>
+            
+            <p><strong>Key Points with Definitions:</strong></p>
+            <ul class="pillar-list">
+                <li class="pillar-item">
+                    <strong>Encapsulation</strong> — <em>Definition:</em> Binding data and methods together within a class, restricting direct access to some components (e.g., private fields). 
+                    <p><strong>Explanation:</strong> This protects an object's internal state from unauthorized access, like a capsule that keeps medicine safe. In JS, use <code>#privateField</code> or closures for privacy.</p>
+                </li>
+                <li class="pillar-item">
+                    <strong>Abstraction</strong> — <em>Definition:</em> Hiding complex implementation details, exposing only necessary parts through public interfaces. 
+                    <p><strong>Explanation:</strong> Users interact with simple methods without knowing the underlying complexity, like driving a car without understanding the engine. In JS, getters/setters abstract property access.</p>
+                </li>
+                <li class="pillar-item">
+                    <strong>Inheritance</strong> — <em>Definition:</em> Reusing code from a parent class by creating child classes that extend it. 
+                    <p><strong>Explanation:</strong> Child classes inherit properties and methods, allowing specialization (e.g., a "SportsCar" extending "Car"). JS uses <code>extends</code> and <code>super()</code> for this.</p>
+                </li>
+                <li class="pillar-item">
+                    <strong>Polymorphism</strong> — <em>Definition:</em> Allowing objects of different classes to be treated uniformly through a common interface, where methods behave differently based on the object. 
+                    <p><strong>Explanation:</strong> Enables flexibility, like calling <code>draw()</code> on various shapes—each draws itself uniquely. In JS, achieved via method overriding.</p>
+                </li>
+            </ul>
+
+            <pre><code>
+// Example of OOP Pillars
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    greet() {
+        console.log(`Hello, I am ${this.name}`);
+    }
+}
+
+class Student extends Person { // Inheritance
+    constructor(name, course) {
+        super(name);
+        this.course = course;
+    }
+    greet() { // Polymorphism
+        console.log(`Hi, I am ${this.name}, studying ${this.course}`);
+    }
+}
+
+const s2 = new Student("Himanshu", "CS");
+s2.greet(); // Output: Hi, I am Himanshu, studying CS
+            </code></pre>
+            <p><strong>Explanation:</strong> <code>Student</code> inherits from <code>Person</code> (inheritance), but overrides <code>greet()</code> (polymorphism). Properties are bundled (encapsulation), and users see only <code>greet()</code> (abstraction).</p>
+        </section>
+
+        <!-- Constructor Function -->
+        <section>
+            <h2>5️⃣ Constructor Function</h2>
+            <p><strong>Definition:</strong> Constructor functions were used before ES6 classes to create objects. They are regular functions invoked with <code>new</code>, setting up object properties via <code>this</code>. Methods are added to the prototype for sharing across instances.</p>
+            
+            <p><strong>Key Points:</strong></p>
+            <ul>
+                <li><strong>Prototype Chain:</strong> Methods on <code>prototype</code> are shared, saving memory.</li>
+                <li><strong>Pre-ES6 Standard:</strong> Still works today; classes are syntactic sugar over this.</li>
+                <li><strong>Instance Creation:</strong> <code>new</code> binds <code>this</code> to a new object.</li>
+                <li><strong>Advantages:</strong> Flexible for dynamic prototypes.</li>
+                <li><strong>Disadvantages:</strong> Less readable than classes; error-prone with inheritance.</li>
+            </ul>
+
+            <pre><code>
+function Student(name, course) {
+    this.name = name;
+    this.course = course;
+}
+
+Student.prototype.study = function() {
+    console.log(`${this.name} is studying ${this.course}`);
+};
+
+const s3 = new Student("Ravi", "IT");
+s3.study(); // Output: Ravi is studying IT
+            </code></pre>
+            <p><strong>Explanation:</strong> This mimics class behavior: the function acts as a blueprint, and <code>prototype</code> enables inheritance. It's still valid today but classes provide cleaner syntax. Note how <code>study</code> is shared via prototype, not duplicated per instance.</p>
+        </section>
+
+        <hr>
+
+        <!-- Lecture 2 -->
+        <h1>Lecture 2: Advanced OOP Concepts</h1>
+
+        <!-- Polymorphism Example -->
+        <section>
+            <h2>Polymorphism Example</h2>
+            <p><strong>Definition:</strong> Polymorphism allows a single interface to represent different underlying forms (data types). In practice, it lets us call the same method on different objects, with each responding in its own way.</p>
+            
+            <p><strong>Key Points:</strong></p>
+            <ul>
+                <li><strong>Method Overriding:</strong> Child classes redefine parent methods.</li>
+                <li><strong>Dynamic Dispatch:</strong> JS resolves the correct method at runtime based on the object.</li>
+                <li><strong>Use Cases:</strong> GUIs (buttons with different click behaviors), APIs (uniform data handling).</li>
+                <li><strong>Advantages:</strong> Code flexibility and extensibility.</li>
+                <li><strong>Disadvantages:</strong> Can hide bugs if not overridden properly.</li>
+            </ul>
+
+            <pre><code>
+class Shape {
+    area() {
+        return 0;
+    }
+}
+
+class Circle extends Shape {
+    constructor(radius) {
+        super();
+        this.radius = radius;
+    }
+
+    area() {
+        return Math.PI * this.radius * this.radius;
+    }
+}
+
+class Rectangle extends Shape {
+    constructor(width, height) {
+        super();
+        this.width = width;
+        this.height = height;
+    }
+
+    area() {
+        return this.width * this.height;
+    }
+}
+
+const shapes = [new Circle(3), new Rectangle(4, 5)];
+shapes.forEach(shape => console.log("Area:", shape.area())); 
+// Output: Area: 28.274333882308138 (approx for circle)
+//         Area: 20
+            </code></pre>
+            <p><strong>Explanation:</strong> Both <code>Circle</code> and <code>Rectangle</code> override <code>area()</code> from <code>Shape</code>, allowing a loop to treat them polymorphically without knowing their exact type. This demonstrates runtime flexibility.</p>
+        </section>
+
+        <!-- This Keyword -->
+        <section>
+            <h2>What is <code>this</code> Keyword?</h2>
+            <p><strong>Definition:</strong> The <code>this</code> keyword refers to the current object in which the code is executing. It depends on where and how it is called—context is determined by invocation, not definition.</p>
+            
+            <p><strong>Key Points:</strong></p>
+            <ul>
+                <li><strong>In Methods:</strong> Refers to the object the method is called on.</li>
+                <li><strong>In Constructors:</strong> Refers to the new instance being created.</li>
+                <li><strong>Arrow Functions:</strong> Lexical <code>this</code>—inherits from enclosing scope.</li>
+                <li><strong>Global Context:</strong> <code>window</code> (non-strict) or <code>undefined</code> (strict).</li>
+                <li><strong>Explicit Binding:</strong> Use <code>call()</code>, <code>apply()</code>, or <code>bind()</code> to set <code>this</code>.</li>
+            </ul>
+
+            <pre><code>
+function getAgeYear() {
+    return new Date().getFullYear() - this.age;
+}
+
+function createUser(firstName, lastName, age) {
+    return {
+        firstName,
+        lastName,
+        age,
+        getAgeYear,
+    };
+}
+
+const user1 = createUser("Sudhanshu", "Kumar", 20);
+const user2 = createUser("Himanshu", "Kumar", 19);
+
+console.log(user1.getAgeYear()); // Output: 2005 (2025 - 20)
+console.log(user2.getAgeYear()); // Output: 2006 (2025 - 19)
+            </code></pre>
+
+            <p><strong>Explanation:</strong> Here, <code>this</code> refers to each user object, so <code>this.age</code> accesses each user's age. This dynamic binding is key to OOP in JS, enabling methods to operate on instance data seamlessly. Be cautious with callbacks, where <code>this</code> might lose context—use arrows or bind to preserve it.</p>
+        </section>
+
+        <!-- new Keyword -->
+        <section>
+            <h2>What is <code>new</code> Keyword?</h2>
+            <p><strong>Definition:</strong> The <code>new</code> keyword creates a new object from a constructor function or class. It performs four steps: creates an empty object, links its prototype, sets <code>this</code> to it, and returns it.</p>
+            
+            <p><strong>Key Points:</strong></p>
+            <ul>
+                <li><strong>Object Creation:</strong> Allocates a new <code>{}</code> object.</li>
+                <li><strong>Prototype Linking:</strong> Sets object's <code>__proto__</code> to constructor's <code>prototype</code>.</li>
+                <li><strong>Context Binding:</strong> Binds <code>this</code> inside constructor to the new object.</li>
+                <li><strong>Return Handling:</strong> Constructor can return an object to override the default return.</li>
+                <li><strong>Without <code>new</code>:</strong> Constructor runs but <code>this</code> is global—avoid this mistake.</li>
+            </ul>
+
+            <pre><code>
+class Car {
+    constructor(name, model) {
+        this.name = name;
+        this.model = model;
+    }
+
+    info() {
+        console.log(`${this.name} model is ${this.model}`);
+    }
+}
+
+const car1 = new Car("Tesla", "Model S");
+car1.info(); // Output: Tesla model is Model S
+            </code></pre>
+
+            <p><strong>Explanation:</strong> The <code>new</code> keyword automatically creates a new object, sets <code>this</code> to that object, and returns it. This is essential for instantiation in OOP. Forgetting <code>new</code> leads to errors, as properties would attach to the global object instead.</p>
+        </section>
+
+        <!-- Class in JS -->
+        <section>
+            <h2>Class in JavaScript</h2>
+            <p><strong>Definition:</strong> A <code>class</code> is a blueprint for creating objects with properties and methods. Introduced in ES6, it's syntactic sugar over constructor functions and prototypes, making OOP more intuitive.</p>
+            
+            <p><strong>Key Points:</strong></p>
+            <ul>
+                <li><strong>Syntax:</strong> <code>class Name { constructor() {} methods() {} }</code>.</li>
+                <li><strong>Hoisting:</strong> Class declarations are not hoisted like functions—must be defined before use.</li>
+                <li><strong>Static Methods:</strong> Belong to the class, not instances (e.g., utility functions).</li>
+                <li><strong>Private Fields:</strong> Use <code>#</code> prefix for true privacy (ES2022+).</li>
+                <li><strong>Advantages:</strong> Readable, supports async methods, easier inheritance.</li>
+            </ul>
+
+            <pre><code>
+class User {
+    constructor(name, email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    showInfo() {
+        console.log(`Name: ${this.name}, Email: ${this.email}`);
+    }
+}
+
+const u1 = new User("Sudhanshu", "sudhanshu@example.com");
+u1.showInfo(); // Output: Name: Sudhanshu, Email: sudhanshu@example.com
+            </code></pre>
+            <p><strong>Explanation:</strong> Classes provide a clean template for objects. Here, <code>User</code> defines instance properties in <code>constructor</code> and a method <code>showInfo</code>. Extend it with <code>extends</code> for hierarchies. Remember, classes are functions at runtime: <code>typeof User === 'function'</code>.</p>
+        </section>
+    </div>
+
+</body>
+</html>
