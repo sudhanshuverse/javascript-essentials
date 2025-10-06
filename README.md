@@ -46,6 +46,10 @@ This repository is designed to help learners build a **solid foundation in JavaS
 | 21 | Event Simulation | [View](https://sudhanshuverse.github.io/javascript-essentials/21-event-samulation/) |
 | 22 | Local Storage | [View](https://sudhanshuverse.github.io/javascript-essentials/22-local-storage/) |
 | 23 | API | [View](https://sudhanshuverse.github.io/javascript-essentials/23-api/) |
+| 23 | Import Export | [View](https://sudhanshuverse.github.io/javascript-essentials/24-import-export/) |
+| 23 | OOP | [View](https://sudhanshuverse.github.io/javascript-essentials/25-oop/) |
+| 23 | this Keyword | [View](https://sudhanshuverse.github.io/javascript-essentials/26-this-keyword/) |
+| 27 | Date And Time | [View](https://sudhanshuverse.github.io/javascript-essentials/27-date-and-time/) |
 
 ---
 
