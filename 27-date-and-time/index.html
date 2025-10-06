@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Time?</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>What is Time?</h1>
+
+        <div class="section">
+            <h2>Core Definition</h2>
+            <p>Time is fundamentally a dimension that sequences and measures the duration between events, enabling us to distinguish "before" from "after." In physics, it's often described as the fourth dimension in spacetime (per Einstein's relativity), intertwined with space. Philosophically, thinkers like Aristotle viewed time as a measure of change, while modern quantum theories explore it as emergent from entropy or particle interactions. Practically, time structures human society—from calendars for agriculture to synchronized global finance.</p>
+        </div>
+
+        <div class="section">
+            <h2>Early Measurement</h2>
+            <p>Humanity's earliest timekeeping relied on observable celestial cycles:</p>
+            <ul>
+                <li><strong>Solar cycles:</strong> The sun's daily arc defined the day.</li>
+                <li><strong>Lunar cycles:</strong> Moon phases tracked months (e.g., ~29.5 days).</li>
+                <li><strong>Stellar observations:</strong> Ancient Egyptians and Babylonians used stars for precise seasonal timing.</li>
+            </ul>
+            <p>Devices evolved from rudimentary tools:</p>
+            <ul>
+                <li><strong>Sundials (c. 1500 BCE):</strong> Shadows cast by a gnomon on a marked surface tracked solar hours. Limitation: Useless at night or in clouds.</li>
+                <li><strong>Water clocks (clepsydra) (c. 1400 BCE):</strong> Water dripping at a constant rate into a vessel marked time intervals. Used in ancient Greece for speeches.</li>
+                <li><strong>Hourglasses (c. 8th century CE):</strong> Sand flowing through a narrow neck measured short durations, like ship's watches.</li>
+            </ul>
+            <p>These were imprecise (±15 minutes/day) due to environmental factors.</p>
+        </div>
+
+        <div class="section">
+            <h2>Modern Measurement</h2>
+            <p>Today, time is quantified using quantum mechanics:</p>
+            <ul>
+                <li><strong>Atomic clocks (invented 1949):</strong> Vibrating atoms (e.g., cesium-133) provide stability. The NIST-F2 clock loses/gains &lt;1 second in 300 million years.</li>
+                <li><strong>Global Network:</strong> ~400 atomic clocks worldwide contribute to standards via GPS and internet synchronization.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Basic Units of Time</h2>
+            <p>The International System of Units (SI) defines:</p>
+            <ul>
+                <li><strong>Second (s):</strong> Exactly 9,192,631,770 periods of radiation from cesium-133's hyperfine transition (1967 definition, refined from 1/86,400 of a mean solar day).</li>
+                <li><strong>Minute (min):</strong> 60 seconds (sexagesimal from Babylonian base-60).</li>
+                <li><strong>Hour (h):</strong> 60 minutes.</li>
+                <li><strong>Day (d):</strong> 24 hours (approximating Earth's rotation).</li>
+            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unit</th>
+                        <th>Definition</th>
+                        <th>Example Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Second</td>
+                        <td>9,192,631,770 Cs-133 vibrations</td>
+                        <td>Heartbeat (~1 s), CPU cycles</td>
+                    </tr>
+                    <tr>
+                        <td>Minute</td>
+                        <td>60 s</td>
+                        <td>Meetings, cooking timers</td>
+                    </tr>
+                    <tr>
+                        <td>Hour</td>
+                        <td>60 min</td>
+                        <td>Work shifts, flight durations</td>
+                    </tr>
+                    <tr>
+                        <td>Day</td>
+                        <td>24 h</td>
+                        <td>Solar day, but sidereal day is ~23h 56m</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="js-tie-in">
+                <p><strong>JavaScript Tie-In:</strong> The myDate.getTime() method returns milliseconds since January 1, 1970, 00:00:00 UTC (Unix epoch). On Oct 6, 2025, ~14:30 UTC, this might output 1759745800000 (a large integer for precise timestamps in apps).</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Types of Time</h2>
+            <p>Time isn't monolithic; context dictates the type. Here's a breakdown:</p>
+
+            <h3>Solar Time</h3>
+            <p><strong>Basis:</strong> Apparent position of the Sun. A solar day is ~24 hours, but varies slightly due to Earth's elliptical orbit (equation of time: up to ±16 minutes deviation).</p>
+            <p><strong>Example:</strong> True solar noon is when the Sun crosses the local meridian. In summer, days lengthen in the Northern Hemisphere.</p>
+            <p><strong>Challenges:</strong> Inconsistent lengths led to "mean solar time" (averaged day).</p>
+
+            <h3>Local Time</h3>
+            <p><strong>Basis:</strong> Solar time adjusted for a specific longitude. Earth rotates 15°/hour, so 1° longitude = 4 minutes.</p>
+            <p><strong>Example:</strong> At 0° (Greenwich), local noon is exact; at 5°E (Paris), it's 20 minutes earlier.</p>
+            <p><strong>Relevance:</strong> Pre-railway era, each town had its own; now obsolete for civil use but vital in astronomy.</p>
+
+            <h3>Standard Time</h3>
+            <p><strong>Basis:</strong> Fixed offsets within time zones (15° wide ideally) for uniformity.</p>
+            <p><strong>History:</strong> Sir Sandford Fleming proposed in 1879 amid railway chaos; adopted at 1884 International Meridian Conference.</p>
+            <p><strong>Example:</strong> US has 4 main zones (Eastern, Central, etc.), ignoring minor longitudes for practicality.</p>
+
+            <h3>Atomic Time</h3>
+            <p><strong>Basis:</strong> Continuous cesium oscillations, independent of Earth's irregularities.</p>
+            <p><strong>Precision:</strong> ~10⁻¹⁶ relative accuracy.</p>
+            <p><strong>Use:</strong> GPS, stock trades (nanosecond precision prevents errors).</p>
+
+            <h3>Coordinated Universal Time (UTC)</h3>
+            <p><strong>Basis:</strong> Atomic time + leap seconds to match solar day.</p>
+            <p><strong>Details:</strong> Maintained by BIPM/International Earth Rotation Service. 27 leap seconds added since 1972 (last: 2016).</p>
+            <p><strong>Global Role:</strong> Basis for civil time; ISPs sync to it.</p>
+
+            <h3>International Atomic Time (TAI)</h3>
+            <p><strong>Basis:</strong> Weighted average of 400+ atomic clocks (no leap seconds).</p>
+            <p><strong>Scale:</strong> Started Jan 1, 1958; TAI-UTC = 37 seconds (as of 2025).</p>
+            <p><strong>Use:</strong> Pure science; GPS uses a TAI variant.</p>
+
+            <h3>Astronomical Time</h3>
+            <p><strong>UT1:</strong> UTC + Earth's rotation irregularities (nutation, precession).</p>
+            <p><strong>UT2:</strong> Smoothed UT1 for seasonal wobbles.</p>
+            <p><strong>Example:</strong> Telescopes use UT1 to track stars; difference from UTC ≤0.9s.</p>
+
+            <h3>Mission / Space Time</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mission Type</th>
+                        <th>Time System</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ISS</td>
+                        <td>UTC</td>
+                        <td>Crew schedules; 90-min orbits mean 16 sunrises/day.</td>
+                    </tr>
+                    <tr>
+                        <td>GPS Satellites</td>
+                        <td>GPS Time (TAI - 19s)</td>
+                        <td>No leap seconds; clocks run slower by 38μs/day due to relativity.</td>
+                    </tr>
+                    <tr>
+                        <td>Mars Rovers (e.g., Perseverance)</td>
+                        <td>Mars Solar Day (Sol: 24h 39m 35s)</td>
+                        <td>Adjusted for Martian rotation; "sol 1000" = ~1000 Earth days.</td>
+                    </tr>
+                    <tr>
+                        <td>Apollo Missions</td>
+                        <td>Mission Elapsed Time (MET)</td>
+                        <td>From launch (e.g., Apollo 11: 102:45:45 at moon landing).</td>
+                    </tr>
+                    <tr>
+                        <td>Deep Space (e.g., Voyager)</td>
+                        <td>TDB (Barycentric Dynamical Time)</td>
+                        <td>Relativistic corrections for solar system barycenter.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="js-tie-in">
+                <p><strong>JavaScript Tie-In:</strong> myDate.toUTCString() outputs RFC 1123 format (e.g., "Mon, 06 Oct 2025 14:30:00 GMT"). myDate.toString() uses local format (e.g., "Mon Oct 06 2025 10:00:00 GMT-0430" if in EDT). These are useful for logging space sims or web APIs.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Local Time and Solar Time</h2>
+            <p>Local Mean Time (LMT) averages solar irregularities for a meridian. Pre-1900, ~100 US LMTs caused train wrecks (e.g., 1883 "railway time" standardized to 100+ zones, then 4). Time zones solved this by grouping longitudes into 24 UTC offsets. Example: Paris (2.35°E) LMT is ~9.4 min ahead of Greenwich; now both in CET (UTC+1).</p>
+        </div>
+
+        <div class="section">
+            <h2>GMT — Greenwich Mean Time</h2>
+            <p><strong>Origin:</strong> 1675 Royal Observatory; 1884 prime meridian.</p>
+            <p><strong>Mean Solar:</strong> Averages apparent solar day.</p>
+            <p><strong>Vs. UTC:</strong> Identical except leap seconds (GMT lacks them; UTC has). Still used for BST reference.</p>
+            <p><strong>Example:</strong> GMT 12:00 → IST (UTC+5:30) = 17:30. In JS: myDate.getUTCHours() gives GMT hours (e.g., 14 on Oct 6).</p>
+        </div>
+
+        <div class="section">
+            <h2>UTC — Coordinated Universal Time</h2>
+            <p><strong>Adopted:</strong> 1972, replacing GMT.</p>
+            <p><strong>Offsets:</strong> +14 to -12 hours (e.g., Kiribati spans dateline).</p>
+            <p><strong>Leap Seconds:</strong> Inserted June/Dec if UT1-UTC &gt;0.9s (debated for abolition by 2035).</p>
+            <p><strong>Example:</strong> UTC 12:00 → IST 17:30 → EDT 08:00. JS: myDate.getTimezoneOffset() returns minutes west of UTC (e.g., -240 for EDT = -4 hours).</p>
+        </div>
+
+        <div class="section">
+            <h2>TAI — International Atomic Time</h2>
+            <p><strong>Ensemble:</strong> ~70 labs; second = exact Cs vibration.</p>
+            <p><strong>Formula:</strong> UTC = TAI - (10 + leap seconds) since 1972.</p>
+            <p><strong>Example:</strong> If TAI=12:00:37, UTC=12:00:00 (37s offset). JS approximation: No direct TAI, but getTime() + offset mimics atomic ticks.</p>
+        </div>
+
+        <div class="section">
+            <h2>Time Zones Around the World</h2>
+            <p>Expanded table with more zones and DST notes:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Region</th>
+                        <th>Time Zone</th>
+                        <th>UTC Offset</th>
+                        <th>Example Cities</th>
+                        <th>DST?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>India</td>
+                        <td>IST</td>
+                        <td>+5:30</td>
+                        <td>Delhi, Mumbai</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>UK</td>
+                        <td>GMT/BST</td>
+                        <td>0 / +1</td>
+                        <td>London</td>
+                        <td>Yes (Mar-Oct)</td>
+                    </tr>
+                    <tr>
+                        <td>USA East</td>
+                        <td>EST/EDT</td>
+                        <td>-5 / -4</td>
+                        <td>New York</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Japan</td>
+                        <td>JST</td>
+                        <td>+9</td>
+                        <td>Tokyo</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Australia East</td>
+                        <td>AEST/AEDT</td>
+                        <td>+10 / +11</td>
+                        <td>Sydney</td>
+                        <td>Yes (Oct-Apr)</td>
+                    </tr>
+                    <tr>
+                        <td>China</td>
+                        <td>CST</td>
+                        <td>+8</td>
+                        <td>Beijing</td>
+                        <td>No (single zone despite size)</td>
+                    </tr>
+                    <tr>
+                        <td>Brazil</td>
+                        <td>BRT</td>
+                        <td>-3</td>
+                        <td>São Paulo</td>
+                        <td>Yes (varies)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="js-tie-in">
+                <p><strong>JS Insight:</strong> myDate.toLocaleDateString('en-GB') formats as DD/MM/YYYY (e.g., "06/10/2025"), locale-aware for zones.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Daylight Saving Time (DST)</h2>
+            <p><strong>Purpose:</strong> Extend evening light (energy savings debated; ~0.03% US reduction).</p>
+            <p><strong>History:</strong> Benjamin Franklin joked 1784; Germany 1916 wartime. US since 1918.</p>
+            <p><strong>Variations:</strong> EU ends 2021 trial; ~70 countries use, but India/Africa/Japan don't.</p>
+            <p><strong>Example:</strong> NYC: Nov 2, 2025, clocks back (EDT→EST). JS: getHours() jumps at transitions—handle with isDST() polyfills.</p>
+        </div>
+
+        <div class="section">
+            <h2>Astronomical Time</h2>
+            <p>UT1 tracks irregular rotation (chandler wobble ~0.7 arcsec); UT2 smooths. Leap seconds keep |UT1-UTC|&lt;0.9s. Used in ephemerides for comet paths. Example: 2025 total eclipse timing in UT1.</p>
+        </div>
+
+        <div class="section">
+            <h2>Time in Space</h2>
+            <p>As tabled earlier; relativity key: Clocks on GPS satellites tick slower (special) but faster (general) net +38μs/day. MET for Apollo: Cumulative from T-0. JS for sims: new Date(startTime).getTime() + elapsed.</p>
+        </div>
+
+        <div class="section">
+            <h2>JavaScript Date Object: Detailed Breakdown</h2>
+            <p>The JavaScript <code>Date</code> object represents a point in time. It provides methods for getting, setting, and formatting dates and times. Below is a detailed explanation of its constructors, static methods, instance methods (grouped by category), and properties, based on the official documentation. Examples use October 6, 2025, 14:30:00 UTC (local EDT: 10:30:00).</p>
+
+            <h3>Constructors</h3>
+            <div class="method">
+                <h4>Date()</h4>
+                <p class="description">When called as a constructor with <code>new</code>, returns a new <code>Date</code> object representing the current date and time if no arguments are provided, or a specific date based on the arguments. When called as a function without <code>new</code>, returns a string representation of the current date and time. Accepts various argument forms: a timestamp (milliseconds since epoch), a date-time string (in the specified format like "YYYY-MM-DDTHH:mm:ss.sssZ"), or individual components (year, month (0-11), day, hour, minute, second, millisecond) interpreted in local time unless using Date.UTC().</p>
+                <p class="params"><strong>Parameters:</strong> 
+                    - No arguments: Current date/time.
+                    - One argument: Timestamp (number) or date-time string.
+                    - 2-7 arguments: Year, month (0-11), day (1-31), hour (0-23), minute (0-59), second (0-59), millisecond (0-999).
+                </p>
+                <p class="return"><strong>Return value:</strong> A new <code>Date</code> object (as constructor) or a string (as function).</p>
+                <pre><code>const today = new Date(); // Current date/time
+const exampleDate = new Date(2025, 9, 6, 14, 30, 0); // October 6, 2025, 14:30:00 UTC
+console.log(exampleDate.toString()); // e.g., "Mon Oct 06 2025 10:30:00 GMT-0400 (EDT)"</code></pre>
+            </div>
+
+            <h3>Static Methods</h3>
+            <div class="method">
+                <h4>Date.now()</h4>
+                <p class="description">Returns the current timestamp as the number of milliseconds elapsed since January 1, 1970 00:00:00 UTC (epoch), ignoring leap seconds.</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> A number representing the current timestamp.</p>
+                <pre><code>const now = Date.now();
+console.log(now); // e.g., 1759745800000</code></pre>
+            </div>
+
+            <div class="method">
+                <h4>Date.parse()</h4>
+                <p class="description">Parses a string representation of a date (in the date-time string format or other supported formats) and returns the number of milliseconds since the epoch (January 1, 1970 00:00:00 UTC), ignoring leap seconds. Returns NaN for invalid dates.</p>
+                <p class="params"><strong>Parameters:</strong> A string representing a date (e.g., "2011-10-10T14:48:00").</p>
+                <p class="return"><strong>Return value:</strong> A number (timestamp in milliseconds) or NaN.</p>
+                <pre><code>const timestamp = Date.parse("2025-10-06T14:30:00Z");
+console.log(timestamp); // 1759745800000</code></pre>
+            </div>
+
+            <div class="method">
+                <h4>Date.UTC()</h4>
+                <p class="description">Accepts date components and returns the number of milliseconds since the epoch (January 1, 1970 00:00:00 UTC), interpreting them as UTC time, ignoring leap seconds.</p>
+                <p class="params"><strong>Parameters:</strong> 2-7 arguments: year, month (0-11), day (1-31), hour (0-23), minute (0-59), second (0-59), millisecond (0-999).</p>
+                <p class="return"><strong>Return value:</strong> A number (timestamp in milliseconds).</p>
+                <pre><code>const timestamp = Date.UTC(2025, 9, 6, 14, 30, 0);
+console.log(timestamp); // 1759745800000</code></pre>
+            </div>
+
+            <h3>Instance Methods</h3>
+
+            <h4>Getters (Local Time)</h4>
+            <p>These methods retrieve date components interpreted in the local time zone.</p>
+            <div class="method">
+                <h4>getDate()</h4>
+                <p class="description">Returns the day of the month (1-31).</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (1-31).</p>
+                <pre><code>const myDate = new Date(2025, 9, 6, 14, 30, 0);
+myDate.getDate(); // 6</code></pre>
+            </div>
+            <div class="method">
+                <h4>getDay()</h4>
+                <p class="description">Returns the day of the week (0-6, where 0 is Sunday).</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (0-6).</p>
+                <pre><code>myDate.getDay(); // 1 (Monday)</code></pre>
+            </div>
+            <div class="method">
+                <h4>getFullYear()</h4>
+                <p class="description">Returns the full year (4 digits).</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (e.g., 2025).</p>
+                <pre><code>myDate.getFullYear(); // 2025</code></pre>
+            </div>
+            <div class="method">
+                <h4>getHours()</h4>
+                <p class="description">Returns the hour (0-23).</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (0-23).</p>
+                <pre><code>myDate.getHours(); // 10 (local EDT)</code></pre>
+            </div>
+            <div class="method">
+                <h4>getMilliseconds()</h4>
+                <p class="description">Returns the milliseconds (0-999).</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (0-999).</p>
+                <pre><code>myDate.getMilliseconds(); // 0</code></pre>
+            </div>
+            <div class="method">
+                <h4>getMinutes()</h4>
+                <p class="description">Returns the minutes (0-59).</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (0-59).</p>
+                <pre><code>myDate.getMinutes(); // 30</code></pre>
+            </div>
+            <div class="method">
+                <h4>getMonth()</h4>
+                <p class="description">Returns the month (0-11, where 0 is January).</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (0-11).</p>
+                <pre><code>myDate.getMonth(); // 9 (October)</code></pre>
+            </div>
+            <div class="method">
+                <h4>getSeconds()</h4>
+                <p class="description">Returns the seconds (0-59).</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (0-59).</p>
+                <pre><code>myDate.getSeconds(); // 0</code></pre>
+            </div>
+            <div class="method">
+                <h4>getTime()</h4>
+                <p class="description">Returns the timestamp in milliseconds since the epoch.</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (milliseconds; negative for dates before epoch).</p>
+                <pre><code>myDate.getTime(); // 1759745800000</code></pre>
+            </div>
+            <div class="method">
+                <h4>getTimezoneOffset()</h4>
+                <p class="description">Returns the time-zone offset in minutes from UTC (varies by date and location due to daylight saving time).</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (minutes; e.g., 240 for EDT).</p>
+                <pre><code>myDate.getTimezoneOffset(); // 240</code></pre>
+            </div>
+
+            <h4>Getters (UTC)</h4>
+            <p>These methods retrieve date components interpreted in UTC.</p>
+            <div class="method">
+                <h4>getUTCDate()</h4>
+                <p class="description">Returns the day of the month (1-31) in UTC.</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (1-31).</p>
+                <pre><code>myDate.getUTCDate(); // 6</code></pre>
+            </div>
+            <div class="method">
+                <h4>getUTCDay()</h4>
+                <p class="description">Returns the day of the week (0-6) in UTC.</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (0-6).</p>
+                <pre><code>myDate.getUTCDay(); // 1</code></pre>
+            </div>
+            <div class="method">
+                <h4>getUTCFullYear()</h4>
+                <p class="description">Returns the full year (4 digits) in UTC.</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (e.g., 2025).</p>
+                <pre><code>myDate.getUTCFullYear(); // 2025</code></pre>
+            </div>
+            <div class="method">
+                <h4>getUTCHours()</h4>
+                <p class="description">Returns the hour (0-23) in UTC.</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (0-23).</p>
+                <pre><code>myDate.getUTCHours(); // 14</code></pre>
+            </div>
+            <div class="method">
+                <h4>getUTCMilliseconds()</h4>
+                <p class="description">Returns the milliseconds (0-999) in UTC.</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (0-999).</p>
+                <pre><code>myDate.getUTCMilliseconds(); // 0</code></pre>
+            </div>
+            <div class="method">
+                <h4>getUTCMinutes()</h4>
+                <p class="description">Returns the minutes (0-59) in UTC.</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (0-59).</p>
+                <pre><code>myDate.getUTCMinutes(); // 30</code></pre>
+            </div>
+            <div class="method">
+                <h4>getUTCMonth()</h4>
+                <p class="description">Returns the month (0-11) in UTC.</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (0-11).</p>
+                <pre><code>myDate.getUTCMonth(); // 9</code></pre>
+            </div>
+            <div class="method">
+                <h4>getUTCSeconds()</h4>
+                <p class="description">Returns the seconds (0-59) in UTC.</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number (0-59).</p>
+                <pre><code>myDate.getUTCSeconds(); // 0</code></pre>
+            </div>
+
+            <h4>Setters (Local Time)</h4>
+            <p>These methods set date components interpreted in local time and return the new timestamp.</p>
+            <div class="method">
+                <h4>setDate(day)</h4>
+                <p class="description">Sets the day of the month (1-31); overflows/underflows adjust higher components.</p>
+                <p class="params"><strong>Parameters:</strong> day (number, 1-31).</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp in milliseconds).</p>
+                <pre><code>myDate.setDate(7); // Sets to October 7</code></pre>
+            </div>
+            <div class="method">
+                <h4>setFullYear(year [, month [, date]])</h4>
+                <p class="description">Sets the full year; optional month and date.</p>
+                <p class="params"><strong>Parameters:</strong> year (number), month (0-11, optional), date (1-31, optional).</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setFullYear(2026, 9, 6);</code></pre>
+            </div>
+            <div class="method">
+                <h4>setHours(hour [, minute [, second [, millisecond]]])</h4>
+                <p class="description">Sets the hour (0-23); optional others.</p>
+                <p class="params"><strong>Parameters:</strong> hour (0-23), minute (0-59, optional), etc.</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setHours(15, 45);</code></pre>
+            </div>
+            <div class="method">
+                <h4>setMilliseconds(milliseconds)</h4>
+                <p class="description">Sets the milliseconds (0-999).</p>
+                <p class="params"><strong>Parameters:</strong> milliseconds (0-999).</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setMilliseconds(500);</code></pre>
+            </div>
+            <div class="method">
+                <h4>setMinutes(minute [, second [, millisecond]])</h4>
+                <p class="description">Sets the minutes (0-59); optional others.</p>
+                <p class="params"><strong>Parameters:</strong> minute (0-59), second (0-59, optional), etc.</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setMinutes(45);</code></pre>
+            </div>
+            <div class="method">
+                <h4>setMonth(month [, date])</h4>
+                <p class="description">Sets the month (0-11); optional date.</p>
+                <p class="params"><strong>Parameters:</strong> month (0-11), date (1-31, optional).</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setMonth(10); // Sets to November</code></pre>
+            </div>
+            <div class="method">
+                <h4>setSeconds(second [, millisecond])</h4>
+                <p class="description">Sets the seconds (0-59); optional milliseconds.</p>
+                <p class="params"><strong>Parameters:</strong> second (0-59), millisecond (0-999, optional).</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setSeconds(30);</code></pre>
+            </div>
+            <div class="method">
+                <h4>setTime(time)</h4>
+                <p class="description">Sets the date to the specified timestamp (milliseconds since epoch).</p>
+                <p class="params"><strong>Parameters:</strong> time (number, milliseconds).</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setTime(1759745800000);</code></pre>
+            </div>
+
+            <h4>Setters (UTC)</h4>
+            <p>These methods set date components interpreted in UTC and return the new timestamp.</p>
+            <div class="method">
+                <h4>setUTCDate(day)</h4>
+                <p class="description">Sets the day of the month (1-31) in UTC.</p>
+                <p class="params"><strong>Parameters:</strong> day (1-31).</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setUTCDate(7);</code></pre>
+            </div>
+            <div class="method">
+                <h4>setUTCFullYear(year [, month [, date]])</h4>
+                <p class="description">Sets the full year in UTC; optional month and date.</p>
+                <p class="params"><strong>Parameters:</strong> year, month (optional), date (optional).</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setUTCFullYear(2026, 9, 6);</code></pre>
+            </div>
+            <div class="method">
+                <h4>setUTCHours(hour [, minute [, second [, millisecond]]])</h4>
+                <p class="description">Sets the hour (0-23) in UTC; optional others.</p>
+                <p class="params"><strong>Parameters:</strong> hour, minute (optional), etc.</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setUTCHours(15, 45);</code></pre>
+            </div>
+            <div class="method">
+                <h4>setUTCMilliseconds(milliseconds)</h4>
+                <p class="description">Sets the milliseconds (0-999) in UTC.</p>
+                <p class="params"><strong>Parameters:</strong> milliseconds (0-999).</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setUTCMilliseconds(500);</code></pre>
+            </div>
+            <div class="method">
+                <h4>setUTCMinutes(minute [, second [, millisecond]])</h4>
+                <p class="description">Sets the minutes (0-59) in UTC; optional others.</p>
+                <p class="params"><strong>Parameters:</strong> minute, second (optional), etc.</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setUTCMinutes(45);</code></pre>
+            </div>
+            <div class="method">
+                <h4>setUTCMonth(month [, date])</h4>
+                <p class="description">Sets the month (0-11) in UTC; optional date.</p>
+                <p class="params"><strong>Parameters:</strong> month, date (optional).</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setUTCMonth(10);</code></pre>
+            </div>
+            <div class="method">
+                <h4>setUTCSeconds(second [, millisecond])</h4>
+                <p class="description">Sets the seconds (0-59) in UTC; optional milliseconds.</p>
+                <p class="params"><strong>Parameters:</strong> second, millisecond (optional).</p>
+                <p class="return"><strong>Return value:</strong> Number (new timestamp).</p>
+                <pre><code>myDate.setUTCSeconds(30);</code></pre>
+            </div>
+
+            <h4>Formatters</h4>
+            <p>These methods convert the date to string representations.</p>
+            <div class="method">
+                <h4>toDateString()</h4>
+                <p class="description">Returns the date portion as a human-readable string (e.g., "Mon Oct 06 2025").</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> String.</p>
+                <pre><code>myDate.toDateString(); // "Mon Oct 06 2025"</code></pre>
+            </div>
+            <div class="method">
+                <h4>toISOString()</h4>
+                <p class="description">Returns the date as an ISO 8601 string (e.g., "2025-10-06T14:30:00.000Z").</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> String in UTC.</p>
+                <pre><code>myDate.toISOString(); // "2025-10-06T14:30:00.000Z"</code></pre>
+            </div>
+            <div class="method">
+                <h4>toJSON()</h4>
+                <p class="description">Returns the ISO 8601 string (calls toISOString() internally); used by JSON.stringify().</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> String.</p>
+                <pre><code>myDate.toJSON(); // "2025-10-06T14:30:00.000Z"</code></pre>
+            </div>
+            <div class="method">
+                <h4>toLocaleDateString([locales [, options]])</h4>
+                <p class="description">Returns the date portion in a locale-sensitive format (e.g., "10/6/2025").</p>
+                <p class="params"><strong>Parameters:</strong> locales (string/array, optional), options (object, optional).</p>
+                <p class="return"><strong>Return value:</strong> String.</p>
+                <pre><code>myDate.toLocaleDateString('en-US'); // "10/6/2025"</code></pre>
+            </div>
+            <div class="method">
+                <h4>toLocaleString([locales [, options]])</h4>
+                <p class="description">Returns the full date and time in a locale-sensitive format (e.g., "10/6/2025, 10:30:00 AM").</p>
+                <p class="params"><strong>Parameters:</strong> locales (optional), options (optional).</p>
+                <p class="return"><strong>Return value:</strong> String.</p>
+                <pre><code>myDate.toLocaleString('en-US'); // "10/6/2025, 10:30:00 AM"</code></pre>
+            </div>
+            <div class="method">
+                <h4>toLocaleTimeString([locales [, options]])</h4>
+                <p class="description">Returns the time portion in a locale-sensitive format (e.g., "10:30:00 AM").</p>
+                <p class="params"><strong>Parameters:</strong> locales (optional), options (optional).</p>
+                <p class="return"><strong>Return value:</strong> String.</p>
+                <pre><code>myDate.toLocaleTimeString('en-US'); // "10:30:00 AM"</code></pre>
+            </div>
+            <div class="method">
+                <h4>toString()</h4>
+                <p class="description">Returns a human-readable string of the full date (e.g., "Mon Oct 06 2025 10:30:00 GMT-0400").</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> String in local time.</p>
+                <pre><code>myDate.toString(); // "Mon Oct 06 2025 10:30:00 GMT-0400 (EDT)"</code></pre>
+            </div>
+            <div class="method">
+                <h4>toTimeString()</h4>
+                <p class="description">Returns the time portion as a human-readable string (e.g., "10:30:00 GMT-0400").</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> String.</p>
+                <pre><code>myDate.toTimeString(); // "10:30:00 GMT-0400 (EDT)"</code></pre>
+            </div>
+            <div class="method">
+                <h4>toUTCString()</h4>
+                <p class="description">Returns a human-readable string in UTC (e.g., "Mon, 06 Oct 2025 14:30:00 GMT").</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> String.</p>
+                <pre><code>myDate.toUTCString(); // "Mon, 06 Oct 2025 14:30:00 GMT"</code></pre>
+            </div>
+            <div class="method">
+                <h4>valueOf()</h4>
+                <p class="description">Returns the primitive timestamp value (milliseconds since epoch).</p>
+                <p class="params"><strong>Parameters:</strong> None.</p>
+                <p class="return"><strong>Return value:</strong> Number.</p>
+                <pre><code>myDate.valueOf(); // 1759745800000</code></pre>
+            </div>
+
+            <h4>Instance Properties</h4>
+            <div class="method">
+                <h4>constructor</h4>
+                <p class="description">References the <code>Date</code> constructor function that created the instance.</p>
+                <p class="params"><strong>Parameters:</strong> None (property).</p>
+                <p class="return"><strong>Return value:</strong> The <code>Date</code> constructor function.</p>
+                <pre><code>myDate.constructor === Date; // true</code></pre>
+            </div>
+
+            <pre><code>const myDate = new Date(2025, 9, 6, 14, 30, 0);  // UTC example
+console.log(myDate.toString());  // "Mon Oct 06 2025 10:30:00 GMT-0400 (EDT)" – Local full string
+console.log(myDate.toUTCString());  // "Mon, 06 Oct 2025 14:30:00 GMT" – UTC RFC format
+
+// GET TIME AND DATE IN DETAIL
+console.log(myDate.getTime());  // 1759745800000 – ms since 1970-01-01 UTC (Unix timestamp)
+// GET DATE
+console.log(myDate.toLocaleDateString('en-GB'));  // "06/10/2025" – GB format (DD/MM/YYYY)
+// GET TIME
+console.log(myDate.toLocaleTimeString('en-GB'));  // "10:30:00" – 24h local time
+// Detailed Getters (Local vs. UTC)
+console.log("Date: " + myDate.getDate());  // 6 – Day of month (1-31)
+console.log("UTC Date: " + myDate.getUTCDate());  // 6 – Same if no month boundary
+console.log("Months: " + (myDate.getMonth() + 1));  // 10 – Month (0=Jan, so +1)
+console.log("UTC Months: " + (myDate.getUTCMonth() + 1));  // 10
+console.log("Year: " + myDate.getFullYear());  // 2025
+console.log("UTC Year: " + myDate.getUTCFullYear());  // 2025
+console.log("Day: " + myDate.getDay());  // 1 – Weekday (0=Sun, 1=Mon)
+console.log("UTC Day: " + myDate.getUTCDay());  // 1
+console.log("Hours: " + myDate.getHours());  // 10 – Local 24h
+console.log("UTC Hours: " + myDate.getUTCHours());  // 14
+console.log("Minutes: " + myDate.getMinutes());  // 30
+console.log("UTC Minutes: " + myDate.getUTCMinutes());  // 30
+console.log("Seconds: " + myDate.getSeconds());  // 0 (assuming)
+console.log("UTC Seconds: " + myDate.getUTCSeconds());  // 0
+console.log("Milliseconds: " + myDate.getMilliseconds());  // 0
+console.log("UTC Milliseconds: " + myDate.getUTCMilliseconds());  // 0
+console.log("Time Zone Offset: " + (myDate.getTimezoneOffset() / -60));  // 4 – Hours east of UTC (negative for west)
+console.log("In JSON format: " + myDate.toJSON());  // "2025-10-06T14:30:00.000Z" –</code></pre>
+        </div>
+    </div>
+</body>
+</html>
