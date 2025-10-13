@@ -69,11 +69,6 @@ If you’d like to improve examples, fix bugs, or add new concepts:
 - Commit your changes  
 - Open a Pull Request 🚀  
 
----
-
-## 📜 License
-This project is licensed under the **MIT License**.  
-You are free to use, modify, and distribute with attribution.  
 
 ---
 Made with ❤️ by [Sudhanshu Kumar](https://github.com/sudhanshuverse)
